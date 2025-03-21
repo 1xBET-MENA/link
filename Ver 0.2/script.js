@@ -11,34 +11,26 @@ const emailLinks = {
 };
 
 const telegramLinks = {
-    iraq: "https://t.me/xBET_MENA_IRQ",
-    jordan: "https://t.me/xBET_MENA_JOR"
+    "iraq": "https://t.me/xBET_MENA_IRQ",
+    "jordan": "https://t.me/xBET_MENA_JOR"
 };
 
 let isEmailMode = true;
 
 const switchButton = document.getElementById("switchBtn");
 const switchIcon = document.getElementById("switchIcon");
-const switchText = document.getElementById("switchText");
-const linksContainer = document.getElementById("linksContainer");
-
-const updateLinks = () => {
-    const links = isEmailMode ? emailLinks : telegramLinks;
-    linksContainer.innerHTML = "";
-
-    for (let country in links) {
-        const newLink = document.createElement("a");
-        newLink.href = links[country];
-        newLink.innerText = `1xBET ${country.toUpperCase()} - بالعربي`;
-        linksContainer.appendChild(newLink);
-    }
-};
+const links = document.querySelectorAll('.tg-link');
 
 switchButton.addEventListener("click", () => {
     isEmailMode = !isEmailMode;
-    switchIcon.className = isEmailMode ? "fas fa-envelope" : "fas fa-paper-plane";
-    switchText.textContent = isEmailMode ? "راسلنا مباشرة عبر البريد الإلكتروني" : "راسلنا عبر بوت تيليجرام";
-    updateLinks();
-});
 
-updateLinks();
+    switchIcon.className = isEmailMode ? "fas fa-envelope" : "fas fa-paper-plane";
+
+    links.forEach(link => {
+        const country = link.href.includes("IRQ") ? "iraq" : "jordan";
+        link.href = isEmailMode ? emailLinks[country] : telegramLinks[country];
+        link.innerHTML = isEmailMode
+            ? `<img src="img/${country}.png" alt="Email Logo" loading="lazy">راسلنا عبر البريد`
+            : `<img src="img/${country}.png" alt="Telegram Logo" loading="lazy">1xBET ${country.charAt(0).toUpperCase() + country.slice(1)} - بالعربي`;
+    });
+});
