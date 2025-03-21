@@ -12,27 +12,33 @@ const emailLinks = {
 };
 
 const telegramLinks = {
-    "iraq": "https://t.me/iraqpaymentssupport_bot",
-    "jordan": "https://t.me/jordanpaymentssupport_bot",
+    "iraq": "https://t.me/xBET_MENA_IRQ",
+    "jordan": "https://t.me/xBET_MENA_JOR",
 };
 
 let isEmailMode = true;
 
 const switchButton = document.getElementById("switchBtn");
+const buttonText = document.getElementById("buttonText");
 const switchIcon = document.getElementById("switchIcon");
 
+const buttonTextContent = {
+    "email": "راسلنا مباشرة عبر البريد الإلكتروني",
+    "telegram": "راسلنا مباشرة عبر بوت تلغرام",
+    "links": "زوروا صفحاتنا الرسمية"
+};
+
+// تغيير الأيقونة والنص
 switchButton.addEventListener("click", () => {
     isEmailMode = !isEmailMode;
 
     if (isEmailMode) {
+        buttonText.textContent = buttonTextContent["email"];
         switchIcon.classList.remove("fa-paper-plane");
         switchIcon.classList.add("fa-envelope");
     } else {
+        buttonText.textContent = buttonTextContent["telegram"];
         switchIcon.classList.remove("fa-envelope");
         switchIcon.classList.add("fa-paper-plane");
     }
-
-    let country = "egypt";
-    let link = isEmailMode ? emailLinks[country] || emailLinks["default"] : telegramLinks[country] || telegramLinks["default"];
-    window.location.href = link;
 });
