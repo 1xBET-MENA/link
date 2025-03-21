@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://trusted-source.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdnjs.cloudflare.com; frame-ancestors 'none';">
@@ -25,26 +25,23 @@
             <a href="https://x.com/1xbet_mena" target="_blank" rel="noopener noreferrer" aria-label="صفحة تويتر الرسمية"><i class="fab fa-x-twitter"></i></a>
         </div>
         <div class="links">
-            <a href="https://t.me/xBET_MENA_EGY" class="tg-link" target="_blank"><img src="img/egy.png" alt="Channel Logo" loading="lazy">1xBET Egypt - بالعربي</a>
-            <a href="https://t.me/xBET_MENA_MAR" class="tg-link" target="_blank"><img src="img/mar.png" alt="Channel Logo" loading="lazy">1xBET Morocco - بالعربي</a>
-            <a href="https://t.me/xBET_MENA_MRT" class="tg-link" target="_blank"><img src="img/mrt.png" alt="Channel Logo" loading="lazy">1xBET Mauritania - بالعربي</a>
-            <a href="https://t.me/xBET_MENA_IRQ" class="tg-link" target="_blank"><img src="img/irq.png" alt="Channel Logo" loading="lazy">1xBET Iraq - بالعربي</a>
-            <a href="https://t.me/xBET_MENA_JOR" class="tg-link" target="_blank"><img src="img/jor.png" alt="Channel Logo" loading="lazy">1xBET Jordan - بالعربي</a>
-            <a href="https://t.me/xBET_MENA_DZA" class="tg-link" target="_blank"><img src="img/dza.png" alt="Channel Logo" loading="lazy">1xBET Algeria - بالعربي</a>
+            <a href="#" class="tg-link" data-country="egypt">1xBET Egypt - بالعربي</a>
+            <a href="#" class="tg-link" data-country="morocco">1xBET Morocco - بالعربي</a>
+            <a href="#" class="tg-link" data-country="mauritania">1xBET Mauritania - بالعربي</a>
+            <a href="#" class="tg-link" data-country="iraq">1xBET Iraq - بالعربي</a>
+            <a href="#" class="tg-link" data-country="jordan">1xBET Jordan - بالعربي</a>
+            <a href="#" class="tg-link" data-country="algeria">1xBET Algeria - بالعربي</a>
+            <a href="#" class="tg-link" data-country="tunisia">1xBET Tunisia - بالعربي</a>
+            <a href="#" class="tg-link" data-country="djibouti">1xBET Djibouti - بالعربي</a>
+            <a href="#" class="tg-link" data-country="other-arab">باقي الدول العربية - بالعربي</a>
         </div>
-
-        <div class="switch-container">
-            <button id="switchBtn" class="switch-btn">
-                <span id="buttonText" class="switch-text">راسلنا مباشرة عبر البريد الإلكتروني</span>
-                <i id="switchIcon" class="fas fa-envelope"></i>
-            </button>
+        <div class="email-toggle-btn">
+            <button id="toggleBtn" onclick="switchToEmail()">راسلنا عبر البريد</button>
         </div>
     </div>
-
     <footer>
         <p>Powered by <span>1xBET بالعربي</span></p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
