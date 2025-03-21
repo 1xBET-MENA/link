@@ -1,13 +1,9 @@
-html {
-    scroll-behavior: smooth;
-}
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
     text-align: center;
     margin: 0;
-    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -24,38 +20,50 @@ body {
     backdrop-filter: blur(10px);
 }
 
-.links a {
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.links .tg-link {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
-    margin: 5px 0;
-    display: block;
+    padding: 10px;
+    width: 100%;
+    margin: 2px 0;
     text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .switch-container {
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-top: 20px;
 }
 
 .switch-btn {
-    border: none;
-    background: #fff;
+    background-color: transparent;
+    border: 2px solid white;
     border-radius: 50%;
+    padding: 15px;
     width: 60px;
     height: 60px;
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    font-size: 24px;
+    color: white;
 }
 
 .switch-btn:hover {
-    transform: rotate(360deg);
-}
-
-#switchText {
-    margin-left: 10px;
-    font-size: 16px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
 }
