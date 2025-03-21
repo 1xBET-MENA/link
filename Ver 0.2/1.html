@@ -44,37 +44,6 @@
         <p>Powered by <span>1xBET بالعربي</span></p>
     </footer>
 
-    <script>
-        // قائمة الروابط
-        const emailLinks = {
-            "iraq": "mailto:iraq@example.com",
-            "jordan": "mailto:jordan@example.com",
-            "default": "mailto:default@example.com"
-        };
-
-        const telegramLinks = {
-            "iraq": "https://t.me/xBET_MENA_IRQ",
-            "jordan": "https://t.me/xBET_MENA_JOR",
-        };
-
-        let isEmailMode = true;
-
-        const switchButton = document.getElementById("switchBtn");
-        const switchIcon = document.getElementById("switchIcon");
-
-        switchButton.addEventListener("click", () => {
-            isEmailMode = !isEmailMode;
-            if (isEmailMode) {
-                switchIcon.classList.remove("fa-paper-plane");
-                switchIcon.classList.add("fa-envelope");
-            } else {
-                switchIcon.classList.remove("fa-envelope");
-                switchIcon.classList.add("fa-paper-plane");
-            }
-            let country = "iraq";
-            let link = isEmailMode ? emailLinks[country] || emailLinks["default"] : telegramLinks[country] || telegramLinks["default"];
-            window.location.href = link;
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
