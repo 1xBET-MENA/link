@@ -9,21 +9,28 @@ const emailLinks = {
     "djibouti": "mailto:processing-djibouti@1xbet-team.com",
     "other-arab": "mailto:processing-ar@1xbet-team.com"
 };
+const telegramLinks = {
+    "iraq": "https://t.me/xBET_MENA_IRQ",
+    "jordan": "https://t.me/xBET_MENA_JOR",
+};
 
-let isEmail = false;
+let isEmailMode = true;
 
-function switchToEmail() {
-    isEmail = !isEmail;
-    const toggleButton = document.getElementById('toggleBtn');
-    toggleButton.textContent = isEmail ? 'راسلنا عبر بوت تلغرام' : 'راسلنا عبر البريد';
+const switchButton = document.getElementById("switchBtn");
+const switchIcon = document.getElementById("switchIcon");
 
-    const links = document.querySelectorAll('.tg-link');
-    links.forEach(link => {
-        const country = link.getAttribute('data-country');
-        if (isEmail) {
-            link.href = emailLinks[country];
-        } else {
-            link.href = `https://t.me/1xbet_${country}`;
-        }
-    });
-}
+switchButton.addEventListener("click", () => {
+    isEmailMode = !isEmailMode;
+    
+    if (isEmailMode) {
+        switchIcon.classList.remove("fa-paper-plane");
+        switchIcon.classList.add("fa-envelope");
+    } else {
+        switchIcon.classList.remove("fa-envelope");
+        switchIcon.classList.add("fa-paper-plane");
+    }
+
+    let country = "iraq";
+    let link = isEmailMode ? emailLinks[country] || emailLinks["default"] : telegramLinks[country] || telegramLinks["default"];
+    window.location.href = link;
+});
