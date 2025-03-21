@@ -24,8 +24,7 @@ const switchIcon = document.getElementById("switchIcon");
 
 const buttonTextContent = {
     "email": "راسلنا مباشرة عبر البريد الإلكتروني",
-    "telegram": "راسلنا مباشرة عبر بوت تلغرام",
-    "links": "زوروا صفحاتنا الرسمية"
+    "telegram": "راسلنا مباشرة عبر بوت تلغرام"
 };
 
 // تغيير الأيقونة والنص
