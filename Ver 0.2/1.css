@@ -32,6 +32,7 @@ body {
 }
 
 .switch-container {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -47,35 +48,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
     font-size: 24px;
     color: white;
+    position: relative;
 }
 
 .switch-btn:hover {
+    transform: translateX(-20px);
     background-color: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.switch-btn:focus {
-    outline: none;
 }
 
 .switch-btn:hover::after {
-    content: attr(title);
+    content: "راسلنا عبر البريد الإلكتروني"; /* النص الذي يظهر */
     position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    right: -150px;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 5px 10px;
     font-size: 14px;
     border-radius: 5px;
     white-space: nowrap;
-    margin-top: 5px;
 }
 
 .profile {
