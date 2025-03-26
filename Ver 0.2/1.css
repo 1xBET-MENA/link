@@ -56,10 +56,26 @@ body {
 .switch-btn:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .switch-btn:focus {
     outline: none;
+}
+
+.switch-btn:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin-top: 5px;
 }
 
 .profile {
