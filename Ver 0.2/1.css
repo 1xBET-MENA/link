@@ -30,6 +30,38 @@ body {
     padding-top: 30px;
     flex-grow: 1;
 }
+
+.switch-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.switch-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 15px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+.switch-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.switch-btn:focus {
+    outline: none;
+}
+
 .profile {
     display: flex;
     flex-direction: column;
