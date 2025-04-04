@@ -1,13 +1,9 @@
-document.getElementById("switchBtn").addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", () => {
+    const switchBtn = document.getElementById("switchBtn");
     const linksContainer = document.getElementById("links");
-    const isEmailMode = this.classList.toggle("email-mode");
-    const icon = document.getElementById("switchIcon");
+    const switchIcon = document.getElementById("switchIcon");
+    let currentMode = "telegram"; // الحالة الافتراضية
 
-    // تبديل الأيقونة
-    icon.classList.toggle("fa-envelope");
-    icon.classList.toggle("fa-telegram");
-
-    // بيانات التلغرام والإيميلات والبوتات
     const telegramData = [
         { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
         { href: "https://t.me/xBET_MENA_MAR", text: "1xBET Morocco - بالعربي", flag: "img/mar.png" },
@@ -35,29 +31,34 @@ document.getElementById("switchBtn").addEventListener("click", function() {
         { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" }
     ];
 
-    // مسح الروابط الحالية
-    linksContainer.innerHTML = "";
+    switchBtn.addEventListener("click", function() {
+        // مسح الروابط الحالية
+        linksContainer.innerHTML = "";
 
-    if (isEmailMode) {
-        // إضافة الإيميلات بدون أيقونات
-        emailData.forEach(item => {
-            const link = document.createElement("a");
-            link.href = item.href;
-            link.className = "email-link";
-            link.target = "_blank";
-            link.textContent = item.text;
-            linksContainer.appendChild(link);
-        });
-    } else {
-        // إضافة قنوات التلغرام أو البوتات بناءً على الحالة السابقة
-        const currentMode = this.classList.contains("email-mode") ? botData : telegramData;
-        currentMode.forEach(item => {
-            const link = document.createElement("a");
-            link.href = item.href;
-            link.className = "tg-link";
-            link.target = "_blank";
-            link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
-            linksContainer.appendChild(link);
-        });
-    }
-});
+        if (currentMode === "telegram") {
+            // التحول إلى الإيميلات
+            emailData.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.href;
+                link.className = "email-link";
+                link.target = "_blank";
+                link.textContent = item.text;
+                linksContainer.appendChild(link);
+            });
+            switchIcon.classList.remove("fa-telegram");
+            switchIcon.classList.add("fa-envelope");
+            this.classList.add("email-mode");
+            currentMode = "email";
+        } else if (currentMode === "email") {
+            // التحول إلى البوتات
+            botData.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.href;
+                link.className = "tg-link";
+                link.target = "_blank";
+                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+                linksContainer.appendChild(link);
+            });
+            switchIcon.classList.remove("fa-envelope");
+            switchIcon.classList.add("fa-telegram");
+            currentMode = "bots...
