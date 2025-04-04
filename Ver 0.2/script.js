@@ -31,12 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" }
     ];
 
-    switchBtn.addEventListener("click", function() {
+    switchBtn.addEventListener("click", () => {
         // مسح الروابط الحالية
         linksContainer.innerHTML = "";
 
+        // تحديد الحالة التالية
         if (currentMode === "telegram") {
-            // التحول إلى الإيميلات
+            currentMode = "email";
+            switchIcon.classList.remove("fa-telegram");
+            switchIcon.classList.add("fa-envelope");
+            switchBtn.classList.add("email-mode");
+            switchBtn.classList.remove("bot-mode");
             emailData.forEach(item => {
                 const link = document.createElement("a");
                 link.href = item.href;
@@ -45,12 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.textContent = item.text;
                 linksContainer.appendChild(link);
             });
-            switchIcon.classList.remove("fa-telegram");
-            switchIcon.classList.add("fa-envelope");
-            this.classList.add("email-mode");
-            currentMode = "email";
         } else if (currentMode === "email") {
-            // التحول إلى البوتات
+            currentMode = "bots";
+            switchIcon.classList.remove("fa-envelope");
+            switchIcon.classList.add("fa-telegram");
+            switchBtn.classList.remove("email-mode");
+            switchBtn.classList.add("bot-mode");
             botData.forEach(item => {
                 const link = document.createElement("a");
                 link.href = item.href;
@@ -59,6 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
                 linksContainer.appendChild(link);
             });
-            switchIcon.classList.remove("fa-envelope");
-            switchIcon.classList.add("fa-telegram");
-            currentMode = "bots...
+        } else if (currentMode === "bots") {
+            currentMode = "telegram";
+            switchIcon.classList.remove("fa-telegram");
+            switchIcon.classList.add("fa-envelope");
+            switchBtn.classList.remove("bot-mode");
+            switchBtn.classList.remove("email-mode");
+            telegramData.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.href;
+                link.className = "tg-link";
+                link.target = "_blank";
+                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+                linksContainer.appendChild(link);
+            });
+        }
+    });
+});
