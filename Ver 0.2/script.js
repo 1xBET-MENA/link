@@ -31,18 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" }
     ];
 
-    if (typeof window.FontAwesome === "undefined") {
-        console.error("Font Awesome لم يتم تحميله بشكل صحيح!");
-    }
-
     switchBtn.addEventListener("click", () => {
         linksContainer.innerHTML = "";
 
-        switchIcon.classList.remove("fa-envelope", "fa-robot", "fa-telegram");
+        switchIcon.classList.remove("fa", "fas", "fa-envelope", "fa-robot", "fa-telegram");
 
         if (currentMode === "telegram") {
             currentMode = "email";
-            switchIcon.classList.add("fa-robot");
+            switchIcon.classList.add("fa", "fa-robot");
             switchBtn.classList.add("email-mode");
             switchBtn.classList.remove("bot-mode");
             emailData.forEach(item => {
@@ -56,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("التحول إلى الإيميلات - الأيقونة: fa-robot");
         } else if (currentMode === "email") {
             currentMode = "bots";
-            switchIcon.classList.add("fa-telegram");
+            switchIcon.classList.add("fa", "fa-telegram");
             switchBtn.classList.remove("email-mode");
             switchBtn.classList.add("bot-mode");
             botData.forEach(item => {
@@ -70,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("التحول إلى البوتات - الأيقونة: fa-telegram");
         } else if (currentMode === "bots") {
             currentMode = "telegram";
-            switchIcon.classList.add("fa-envelope");
+            switchIcon.classList.add("fa", "fa-envelope");
             switchBtn.classList.remove("bot-mode");
             switchBtn.classList.remove("email-mode");
             telegramData.forEach(item => {
