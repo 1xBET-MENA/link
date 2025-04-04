@@ -31,6 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" }
     ];
 
+    if (typeof window.FontAwesome === "undefined") {
+        console.error("Font Awesome لم يتم تحميله بشكل صحيح!");
+    }
+
     switchBtn.addEventListener("click", () => {
         linksContainer.innerHTML = "";
 
@@ -49,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.textContent = item.text;
                 linksContainer.appendChild(link);
             });
+            console.log("التحول إلى الإيميلات - الأيقونة: fa-robot");
         } else if (currentMode === "email") {
             currentMode = "bots";
             switchIcon.classList.add("fa-telegram");
@@ -62,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
                 linksContainer.appendChild(link);
             });
+            console.log("التحول إلى البوتات - الأيقونة: fa-telegram");
         } else if (currentMode === "bots") {
             currentMode = "telegram";
             switchIcon.classList.add("fa-envelope");
@@ -75,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
                 linksContainer.appendChild(link);
             });
+            console.log("العودة إلى التلغرام - الأيقونة: fa-envelope");
         }
     });
 });
