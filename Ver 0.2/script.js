@@ -14,10 +14,8 @@ document.getElementById("switchBtn").addEventListener("click", function() {
         setTimeout(() => {
             telegramLinks.style.display = "none";
             emailLinks.style.display = "flex";
-            setTimeout(() => {
-                emailLinks.classList.remove("hidden");
-                emailLinks.classList.add("visible");
-            }, 10);
+            emailLinks.classList.remove("hidden");
+            emailLinks.classList.add("visible");
         }, 500); // يتطابق مع مدة الانتقال في CSS
     } else {
         emailLinks.classList.remove("visible");
@@ -25,16 +23,18 @@ document.getElementById("switchBtn").addEventListener("click", function() {
         setTimeout(() => {
             emailLinks.style.display = "none";
             telegramLinks.style.display = "flex";
-            setTimeout(() => {
-                telegramLinks.classList.remove("hidden");
-                telegramLinks.classList.add("visible");
-            }, 10);
+            telegramLinks.classList.remove("hidden");
+            telegramLinks.classList.add("visible");
         }, 500); // يتطابق مع مدة الانتقال في CSS
     }
 });
 
 // تهيئة الحالة الافتراضية
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("telegramLinks").classList.add("visible");
-    document.getElementById("emailLinks").classList.add("hidden");
+    const telegramLinks = document.getElementById("telegramLinks");
+    const emailLinks = document.getElementById("emailLinks");
+    telegramLinks.style.display = "flex";
+    telegramLinks.classList.add("visible");
+    emailLinks.style.display = "none";
+    emailLinks.classList.add("hidden");
 });
