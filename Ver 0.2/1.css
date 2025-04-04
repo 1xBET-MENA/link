@@ -167,7 +167,7 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.switch-btn:hover::after {
+.switch-btn:not(.email-mode):not(.bot-mode):hover::after {
     content: "راسلنا عبر البريد الإلكتروني";
     position: absolute;
     right: -150px;
@@ -183,6 +183,10 @@ body {
 
 .switch-btn.email-mode:hover::after {
     content: "راسلنا عبر بوتات تلغرام";
+}
+
+.switch-btn.bot-mode:hover::after {
+    content: "راسلنا عبر قنوات تلغرام";
 }
 
 footer {
