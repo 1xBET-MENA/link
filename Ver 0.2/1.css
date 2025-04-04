@@ -61,7 +61,7 @@ body {
 }
 
 .switch-btn:hover::after {
-    content: "راسلنا عبر البريد الإلكتروني"; /* النص الذي يظهر */
+    content: "راسلنا عبر البريد الإلكتروني";
     position: absolute;
     right: -150px;
     top: 50%;
