@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const switchBtn = document.getElementById("switchBtn");
     const linksContainer = document.getElementById("links");
     const switchIcon = document.getElementById("switchIcon");
-    let currentMode = "telegram"; // الحالة الافتراضية
+    let currentMode = "telegram";
 
     const telegramData = [
         { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     switchBtn.addEventListener("click", () => {
-        // مسح الروابط الحالية
+
         linksContainer.innerHTML = "";
 
-        // تحديد الحالة التالية
         if (currentMode === "telegram") {
+
             currentMode = "email";
             switchIcon.classList.remove("fa-telegram");
-            switchIcon.classList.add("fa-envelope");
+            switchIcon.classList.add("fa-robot");
             switchBtn.classList.add("email-mode");
             switchBtn.classList.remove("bot-mode");
             emailData.forEach(item => {
@@ -51,8 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 linksContainer.appendChild(link);
             });
         } else if (currentMode === "email") {
+
             currentMode = "bots";
-            switchIcon.classList.remove("fa-envelope");
+            switchIcon.classList.remove("fa-robot");
             switchIcon.classList.add("fa-telegram");
             switchBtn.classList.remove("email-mode");
             switchBtn.classList.add("bot-mode");
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 linksContainer.appendChild(link);
             });
         } else if (currentMode === "bots") {
+
             currentMode = "telegram";
             switchIcon.classList.remove("fa-telegram");
             switchIcon.classList.add("fa-envelope");
