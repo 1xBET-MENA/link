@@ -129,7 +129,7 @@ body {
 .links-container {
     width: 100%;
     position: relative;
-    min-height: 300px; /* لضمان مساحة كافية للإيميلات */
+    overflow: hidden; /* لمنع التداخل أثناء الانتقال */
 }
 
 .links {
