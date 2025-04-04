@@ -119,6 +119,26 @@ body {
     transform: scale(1.05);
 }
 
+.links .email-link {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 2px 0;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.links .email-link:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
 .switch-container {
     display: flex;
     justify-content: center;
@@ -159,6 +179,10 @@ body {
     font-size: 14px;
     border-radius: 5px;
     white-space: nowrap;
+}
+
+.switch-btn.email-mode:hover::after {
+    content: "راسلنا عبر بوتات تلغرام";
 }
 
 footer {
@@ -214,5 +238,9 @@ footer:hover {
     .links .tg-link img {
         width: 50px;
         height: 50px;
+    }
+    .links .email-link {
+        padding: 10px;
+        font-size: 14px;
     }
 }
