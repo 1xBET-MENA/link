@@ -129,6 +129,7 @@ body {
 .links-container {
     width: 100%;
     position: relative;
+    min-height: 300px; /* لضمان مساحة كافية للإيميلات */
 }
 
 .links {
@@ -137,20 +138,21 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 3px;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .links.hidden {
+    transform: translateY(-100%);
     opacity: 0;
-    transform: translateY(20px);
-    position: absolute;
     pointer-events: none;
 }
 
 .links.visible {
-    opacity: 1;
     transform: translateY(0);
-    position: relative;
+    opacity: 1;
     pointer-events: auto;
 }
 
@@ -178,6 +180,25 @@ body {
 }
 
 .links .tg-link:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.links .email-link {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 15px;
+    width: 100%;
+    max-width: 300px;
+    margin: 2px 0;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 14px;
+    transition: background 0.3s, transform 0.2s;
+    text-align: center;
+}
+
+.links .email-link:hover {
     background: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
 }
@@ -235,5 +256,10 @@ footer:hover {
     .links .tg-link img {
         width: 50px;
         height: 50px;
+    }
+    .links .email-link {
+        padding: 6px 10px;
+        font-size: 12px;
+        max-width: 250px;
     }
 }
