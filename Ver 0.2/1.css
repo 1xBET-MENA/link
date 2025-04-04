@@ -32,7 +32,6 @@ body {
 }
 
 .switch-container {
-    position: relative;
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -129,7 +128,7 @@ body {
 .links-container {
     width: 100%;
     position: relative;
-    overflow: hidden; /* لمنع التداخل أثناء الانتقال */
+    overflow: hidden;
 }
 
 .links {
@@ -139,21 +138,30 @@ body {
     align-items: center;
     margin-top: 3px;
     transition: transform 0.5s ease, opacity 0.5s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
-.links.hidden {
+.telegram-links.hidden {
     transform: translateY(-100%);
     opacity: 0;
-    pointer-events: none;
+    display: none;
 }
 
-.links.visible {
+.telegram-links.visible {
     transform: translateY(0);
     opacity: 1;
-    pointer-events: auto;
+    display: flex;
+}
+
+.email-links.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    display: none;
+}
+
+.email-links.visible {
+    transform: translateY(0);
+    opacity: 1;
+    display: flex;
 }
 
 .links .tg-link {
