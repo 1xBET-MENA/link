@@ -32,13 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     switchBtn.addEventListener("click", () => {
-
         linksContainer.innerHTML = "";
 
         if (currentMode === "telegram") {
-
             currentMode = "email";
-            switchIcon.classList.remove("fa-telegram");
+            switchIcon.classList.remove("fa-envelope");
             switchIcon.classList.add("fa-robot");
             switchBtn.classList.add("email-mode");
             switchBtn.classList.remove("bot-mode");
@@ -51,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 linksContainer.appendChild(link);
             });
         } else if (currentMode === "email") {
-
             currentMode = "bots";
             switchIcon.classList.remove("fa-robot");
             switchIcon.classList.add("fa-telegram");
@@ -66,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 linksContainer.appendChild(link);
             });
         } else if (currentMode === "bots") {
-
             currentMode = "telegram";
             switchIcon.classList.remove("fa-telegram");
             switchIcon.classList.add("fa-envelope");
