@@ -34,13 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
     switchBtn.addEventListener("click", () => {
         linksContainer.innerHTML = "";
 
-        switchIcon.classList.remove("fa", "fas", "fa-envelope", "fa-robot", "fa-telegram");
+        switchIcon.classList.remove("fas", "fa-envelope", "fa-robot", "fa-telegram");
 
         if (currentMode === "telegram") {
             currentMode = "email";
-            switchIcon.classList.add("fa", "fa-robot");
+            switchIcon.classList.add("fas", "fa-envelope");
             switchBtn.classList.add("email-mode");
             switchBtn.classList.remove("bot-mode");
+
+            const emailHeader = document.createElement("p");
+            emailHeader.textContent = "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني";
+            emailHeader.className = "email-header";
+            linksContainer.appendChild(emailHeader);
+
             emailData.forEach(item => {
                 const link = document.createElement("a");
                 link.href = item.href;
@@ -49,12 +55,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.textContent = item.text;
                 linksContainer.appendChild(link);
             });
-            console.log("التحول إلى الإيميلات - الأيقونة: fa-robot");
+            console.log("التحول إلى الإيميلات - الأيقونة: fa-envelope");
         } else if (currentMode === "email") {
             currentMode = "bots";
-            switchIcon.classList.add("fa", "fa-telegram");
+            switchIcon.classList.add("fas", "fa-robot");
             switchBtn.classList.remove("email-mode");
             switchBtn.classList.add("bot-mode");
+
+             const botHeader = document.createElement("p");
+            botHeader.textContent = "اختر دولتك وراسلنا عبر بوتات تلغرام";
+            botHeader.className = "bot-header";
+            linksContainer.appendChild(botHeader);
+
             botData.forEach(item => {
                 const link = document.createElement("a");
                 link.href = item.href;
@@ -63,12 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
                 linksContainer.appendChild(link);
             });
-            console.log("التحول إلى البوتات - الأيقونة: fa-telegram");
+            console.log("التحول إلى البوتات - الأيقونة: fa-robot");
         } else if (currentMode === "bots") {
             currentMode = "telegram";
-            switchIcon.classList.add("fa", "fa-envelope");
+            switchIcon.classList.add("fas", "fa-telegram");
             switchBtn.classList.remove("bot-mode");
             switchBtn.classList.remove("email-mode");
+
             telegramData.forEach(item => {
                 const link = document.createElement("a");
                 link.href = item.href;
@@ -77,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
                 linksContainer.appendChild(link);
             });
-            console.log("العودة إلى التلغرام - الأيقونة: fa-envelope");
+            console.log("العودة إلى التلغرام - الأيقونة: fa-telegram");
         }
     });
 });
