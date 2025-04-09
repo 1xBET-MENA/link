@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
@@ -139,6 +140,22 @@ body {
     transform: scale(1.05);
 }
 
+.email-header {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.bot-header {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 .switch-container {
     display: flex;
     justify-content: center;
@@ -147,74 +164,45 @@ body {
     width: 100%;
 }
 
+.button-group {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .switch-btn {
     background-color: transparent;
     border: 2px solid white;
     border-radius: 50%;
     padding: 15px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
     font-size: 24px;
     color: white;
-    position: relative;
+}
+
+.switch-btn:not(:nth-child(2)) {
+    opacity: 0;
+}
+
+.switch-btn:nth-child(2) {
+    opacity: 1;
+}
+
+.button-group:hover .switch-btn {
+    opacity: 1;
 }
 
 .switch-btn:hover {
     transform: scale(1.1);
     background-color: rgba(255, 255, 255, 0.2);
-}
-
-.switch-btn:not(.email-mode):not(.bot-mode):hover::after {
-    content: "راسلنا عبر البريد الإلكتروني";
-    position: absolute;
-    right: -160px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    white-space: nowrap;
-    text-align: center;
-    min-width: 140px;
-}
-
-.switch-btn.email-mode:hover::after {
-    content: "راسلنا عبر بوتات تلغرام";
-    position: absolute;
-    right: -160px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    white-space: nowrap;
-    text-align: center;
-    min-width: 140px;
-}
-
-.switch-btn.bot-mode:hover::after {
-    content: "قنوات تلغرام الرسمية";
-    position: absolute;
-    right: -160px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    white-space: nowrap;
-    text-align: center;
-    min-width: 140px;
 }
 
 footer {
@@ -274,10 +262,5 @@ footer:hover {
     .links .email-link {
         padding: 10px;
         font-size: 14px;
-    }
-    .switch-btn:not(.email-mode):not(.bot-mode):hover::after,
-    .switch-btn.email-mode:hover::after,
-    .switch-btn.bot-mode:hover::after {
-        right: -120px;
     }
 }
