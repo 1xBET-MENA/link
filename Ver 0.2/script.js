@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "mailto:processing-djibouti@1xbet-team.com", text: "فريق الدعم - جيبوتي" },
         { href: "mailto:processing-jor@1xbet-team.com", text: "فريق الدعم - الأردن" },
         { href: "mailto:processing-haiti@1xbet-team.com", text: "فريق الدعم - هايتي" },
-        { href: "mailto:processing-ar@1xbet-team.com", text: "فريق الدعم - باقي الدول العربية" }
+        { href: "mailto:processing-ar@1xbet-team.com", text: "باقي الدول العربية" }
     ];
 
     const botData = [
