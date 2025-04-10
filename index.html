@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://trusted-source.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdnjs.cloudflare.com https://www.googletagmanager.com; frame-ancestors 'none';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -15,11 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2F9LDBNET"></script>
     <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-J2F9LDBNET');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-J2F9LDBNET');
     </script>
 </head>
 <body>
@@ -34,7 +32,7 @@
             <a href="https://instagram.com/1xbet.mena" target="_blank" rel="noopener noreferrer" aria-label="الصفحة الرسمية على انستغرام"><i class="fab fa-instagram"></i></a>
             <a href="https://x.com/1xbet_mena" target="_blank" rel="noopener noreferrer" aria-label="الصفحة الرسمية على اكس"><i class="fab fa-x-twitter"></i></a>
         </div>
-        <div class="links">
+        <div class="links" id="links">
             <a href="https://t.me/xBET_MENA_EGY" class="tg-link" target="_blank"><img src="img/egy.png" alt="Channel Logo" loading="lazy">1xBET Egypt - بالعربي</a>
             <a href="https://t.me/xBET_MENA_MAR" class="tg-link" target="_blank"><img src="img/mar.png" alt="Channel Logo" loading="lazy">1xBET Morocco - بالعربي</a>
             <a href="https://t.me/xBET_MENA_MRT" class="tg-link" target="_blank"><img src="img/mrt.png" alt="Channel Logo" loading="lazy">1xBET Mauritania - بالعربي</a>
@@ -42,9 +40,23 @@
             <a href="https://t.me/xBET_MENA_JOR" class="tg-link" target="_blank"><img src="img/jor.png" alt="Channel Logo" loading="lazy">1xBET Jordan - بالعربي</a>
             <a href="https://t.me/xBET_MENA_DZA" class="tg-link" target="_blank"><img src="img/dza.png" alt="Channel Logo" loading="lazy">1xBET Algeria - بالعربي</a>
         </div>
+        <div class="switch-container">
+            <div class="button-group">
+                <button id="emailBtn" class="switch-btn side-btn" title="راسلنا عبر البريد الإلكتروني">
+                    <i class="fas fa-envelope"></i>
+                </button>
+                <button id="telegramBtn" class="switch-btn main-btn" title="قنوات تلغرام الرسمية">
+                    <i class="fab fa-telegram"></i>
+                </button>
+                <button id="botBtn" class="switch-btn side-btn" title="راسلنا عبر بوتات تلغرام">
+                    <i class="fas fa-robot"></i>
+                </button>
+            </div>
+        </div>
     </div>
     <footer>
         <p>Powered by <span>1xBET بالعربي</span></p>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 </html>
