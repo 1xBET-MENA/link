@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
@@ -30,6 +31,7 @@ body {
     padding-top: 30px;
     flex-grow: 1;
 }
+
 .profile {
     display: flex;
     flex-direction: column;
@@ -118,6 +120,91 @@ body {
     transform: scale(1.05);
 }
 
+.links .email-link {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 2px 0;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.links .email-link:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.email-header {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.bot-header {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.switch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.button-group {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 15px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+.switch-btn:not(:nth-child(2)) {
+    opacity: 0; /* الأزرار الجانبية مخفية افتراضيًا */
+}
+
+.switch-btn:nth-child(2) {
+    opacity: 1; /* الزر في المنتصف مرئي دائمًا */
+}
+
+.button-group:hover .switch-btn {
+    opacity: 1; /* تظهر جميع الأزرار عند الـ hover */
+}
+
+.switch-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 footer {
     font-size: 14px;
     color: #e0e0e0;
@@ -171,5 +258,9 @@ footer:hover {
     .links .tg-link img {
         width: 50px;
         height: 50px;
+    }
+    .links .email-link {
+        padding: 10px;
+        font-size: 14px;
     }
 }
