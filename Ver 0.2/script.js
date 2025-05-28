@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
             linksContainer.appendChild(link);
         });
         reorderButtons(telegramBtn);
-        console.log("تم اختيار قنوات التلغرام");
     });
 
     emailBtn.addEventListener("click", () => {
@@ -71,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
             linksContainer.appendChild(link);
         });
         reorderButtons(emailBtn);
-        console.log("تم اختيار الإيميلات");
     });
 
     botBtn.addEventListener("click", () => {
@@ -90,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
             linksContainer.appendChild(link);
         });
         reorderButtons(botBtn);
-        console.log("تم اختيار البوتات");
     });
 
     reorderButtons(telegramBtn);
