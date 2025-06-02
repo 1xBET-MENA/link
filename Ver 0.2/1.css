@@ -188,6 +188,11 @@ body {
     color: white;
 }
 
+.switch-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 footer {
     font-size: 14px;
     color: #e0e0e0;
