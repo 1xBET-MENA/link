@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const botData = [
         { href: "https://t.me/iraqpaymentssupport_bot", text: "بوت الدعم المالي - العراق", flag: "img/irq.png" },
         { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" },
-        { href: "https://t.me/algeriapaymentssupport_bot", text: "بوت الدعم المالي - الجزائر", flag: "dza/jor.png" }
+        { href: "https://t.me/algeriapaymentssupport_bot", text: "بوت الدعم المالي - الجزائر", flag: "img/dza.png" }
         
     ];
 
