@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Noto+Sans+Arabic:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2F9LDBNET"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -26,23 +25,22 @@
         <div class="header-container">
             <img src="img/logo.png" alt="شعار 1xBET" class="logo">
             <nav class="navbar">
-                <a href="#home" class="nav-link active">الرئيسية</a>
-                <a href="#telegram" class="nav-link">تلغرام</a>
-                <a href="#email" class="nav-link">البريد الإلكتروني</a>
-                <a href="#bots" class="nav-link">بوتات الدعم</a>
-                <a href="#promocode" class="nav-link">البروموكود</a>
+                <a href="#home" class="nav-link active" aria-label="الانتقال إلى الصفحة الرئيسية">الرئيسية</a>
+                <a href="#telegram" class="nav-link" aria-label="الانتقال إلى قنوات تلغرام">تلغرام</a>
+                <a href="#email" class="nav-link" aria-label="الانتقال إلى البريد الإلكتروني">البريد الإلكتروني</a>
+                <a href="#bots" class="nav-link" aria-label="الانتقال إلى بوتات الدعم">بوتات الدعم</a>
+                <a href="#promocode" class="nav-link" aria-label="الانتقال إلى البروموكود">البروموكود</a>
             </nav>
         </div>
     </header>
     <div class="container">
         <section id="home" class="section">
             <div class="profile">
-                <img src="img/main.jpg" loading="lazy" onerror="this.onerror=null; this.src='default.jpg';" alt="1xBET بالعربي">
+                <img src="img/main.jpg" loading="lazy" onerror="this.onerror=null; this.src='img/default.jpg';" alt="1xBET بالعربي">
                 <h2>مدونة 1xBET بالعربي</h2>
                 <p>آخر الأخبار والإعلانات</p>
             </div>
-            <div class="news-list" id="news-content">
-            </div>
+            <div class="news-list" id="news-content"></div>
             <div class="social-icons">
                 <a href="https://facebook.com/1xbet.mena" target="_blank" rel="noopener noreferrer" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://instagram.com/1xbet.mena" target="_blank" rel="noopener noreferrer" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
@@ -61,15 +59,18 @@
             <h3>بوتات الدعم</h3>
             <div class="links" id="bot-links"></div>
         </section>
-<section id="promocode" class="section">
-    <h3>البروموكود</h3>
-    <div class="promocode-content">
-        <p>استخدم الكود <strong>1X3RBI</strong> للحصول على مكافآت حصرية!</p>
-        <button class="copy-btn" id="copy-promocode-btn">نسخ الكود</button>
-        <p id="copy-status" class="copy-status"></p>
+        <section id="promocode" class="section">
+            <h3>البروموكود</h3>
+            <div class="promocode-content">
+                <p>استخدم الكود <strong>1X3RBI</strong> للحصول على مكافآت حصرية!</p>
+                <button class="copy-btn" id="copy-promocode-btn">نسخ الكود</button>
+                <p id="copy-status" class="copy-status"></p>
+            </div>
+        </section>
     </div>
-</section>
-    </div>
+    <button class="scroll-top-btn" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     <footer>
         <p>Powered by <span>1xBET بالعربي</span></p>
     </footer>
