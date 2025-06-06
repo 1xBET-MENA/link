@@ -3,9 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const telegramLinks = document.getElementById("telegram-links");
     const emailLinks = document.getElementById("email-links");
     const botLinks = document.getElementById("bot-links");
+    const gameBotLinks = document.getElementById("game-bot-links");
     const newsContent = document.getElementById("news-content");
     const copyBtn = document.getElementById("copy-promocode-btn");
     const scrollTopBtn = document.querySelector(".scroll-top-btn");
+    const themeToggle = document.querySelector(".theme-toggle");
+    const langSwitch = document.querySelector(".lang-switch");
 
     const telegramData = [
         { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
@@ -17,58 +20,196 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const emailData = [
-        { href: "mailto:processing@eg.1xbet-team.com", text: "فريق الدعم - مصر" },
-        { href: "mailto:processing-morocco@1xbet-team.com", text: "فريق الدعم - المغرب" },
-        { href: "mailto:processing-mauritania@1xbet-team.com", text: "فريق الدعم - موريتانيا" },
-        { href: "mailto:processing-iq@1xbet-team.com", text: "فريق الدعم - العراق" },
-        { href: "mailto:processing-algeria@1xbet-team.com", text: "فريق الدعم - الجزائر" },
-        { href: "mailto:processing-tunisia@1xbet-team.com", text: "فريق الدعم - تونس" },
-        { href: "mailto:processing-djibouti@1xbet-team.com", text: "فريق الدعم - جيبوتي" },
-        { href: "mailto:processing-jor@1xbet-team.com", text: "فريق الدعم - الأردن" },
-        { href: "mailto:processing-haiti@1xbet-team.com", text: "فريق الدعم - هايتي" },
-        { href: "mailto:processing-ar@1xbet-team.com", text: "باقي الدول العربية" }
+        { href: "mailto:processing@eg.1xbet-team.com", text: "supportTeamEgypt" },
+        { href: "mailto:processing-morocco@1xbet-team.com", text: "supportTeamMorocco" },
+        { href: "mailto:processing-mauritania@1xbet-team.com", text: "supportTeamMauritania" },
+        { href: "mailto:processing-iq@1xbet-team.com", text: "supportTeamIraq" },
+        { href: "mailto:processing-algeria@1xbet-team.com", text: "supportTeamAlgeria" },
+        { href: "mailto:processing-tunisia@1xbet-team.com", text: "supportTeamTunisia" },
+        { href: "mailto:processing-djibouti@1xbet-team.com", text: "supportTeamDjibouti" },
+        { href: "mailto:processing-jor@1xbet-team.com", text: "supportTeamJordan" },
+        { href: "mailto:processing-haiti@1xbet-team.com", text: "supportTeamHaiti" },
+        { href: "mailto:processing-ar@1xbet-team.com", text: "supportTeamOther" }
     ];
 
     const botData = [
-        { href: "https://t.me/iraqpaymentssupport_bot", text: "بوت الدعم المالي - العراق", flag: "img/irq.png" },
-        { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" },
-        { href: "https://t.me/algeriapaymentssupport_bot", text: "بوت الدعم المالي - الجزائر", flag: "img/dza.png" }
+        { href: "https://t.me/iraqpaymentssupport_bot", text: "financialSupportBotIraq", icon: "img/irq.png" },
+        { href: "https://t.me/jordanpaymentssupport_bot", text: "financialSupportBotJordan", icon: "img/jor.png" },
+        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" }
+    ];
+
+    const gameBotData = [
+        { href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
     ];
 
     const newsData = [
-        { title: "عرض جديد!", content: "استخدم كود 1X3RBI للحصول على مكافأة 200% على إيداعك الأول!" },
-        { title: "مباراة اليوم", content: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!" },
-        { title: "تحديث جديد", content: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين." }
+        { title: "newOffer", content: "promocodeOffer" },
+        { title: "matchToday", content: "matchWeek" },
+        { title: "newUpdate", content: "telegramUpdate" },
+        { title: "gameBotNews", content: "gameBotNewsContent" }
     ];
+
+    const translations = {
+        ar: {
+            home: "الرئيسية",
+            telegram: "تلغرام",
+            email: "البريد الإلكتروني",
+            bots: "بوتات الدعم",
+            gameBot: "بوت الألعاب",
+            promocode: "البروموكود",
+            copyBtn: "نسخ الكود",
+            copied: "تم النسخ!",
+            profileTitle: "مدونة 1xBET بالعربي",
+            profileDesc: "آخر الأخبار والإعلانات",
+            telegramHeader: "اختر دولتك وراسلنا مباشرة عبر تلغرام",
+            emailHeader: "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني",
+            botHeader: "اختر دولتك وراسلنا عبر بوتات تلغرام",
+            gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
+            footer: "Powered by <span>1xBET بالعربي</span>",
+            loading: "جاري التحميل...",
+            promocodeText: "استخدم الكود <strong>1X3RBI</strong> للحصول على مكافآت حصرية!",
+            newOffer: "عرض جديد!",
+            promocodeOffer: "استخدم كود 1X3RBI للحصول على مكافأة 200% على إيداعك الأول!",
+            matchToday: "مباراة اليوم",
+            matchWeek: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!",
+            newUpdate: "تحديث جديد",
+            telegramUpdate: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين.",
+            gameBotNews: "إطلاق بوت الألعاب!",
+            gameBotNewsContent: "جرب بوت الألعاب الجديد @xBETxoBOT لتجربة ترفيهية مميزة!",
+            supportTeamEgypt: "فريق الدعم - مصر",
+            supportTeamMorocco: "فريق الدعم - المغرب",
+            supportTeamMauritania: "فريق الدعم - موريتانيا",
+            supportTeamIraq: "فريق الدعم - العراق",
+            supportTeamAlgeria: "فريق الدعم - الجزائر",
+            supportTeamTunisia: "فريق الدعم - تونس",
+            supportTeamDjibouti: "فريق الدعم - جيبوتي",
+            supportTeamJordan: "فريق الدعم - الأردن",
+            supportTeamHaiti: "فريق الدعم - هايتي",
+            supportTeamOther: "باقي الدول العربية",
+            financialSupportBotIraq: "بوت الدعم المالي - العراق",
+            financialSupportBotJordan: "بوت الدعم المالي - الأردن",
+            financialSupportBotAlgeria: "بوت الدعم المالي - الجزائر",
+            gameBot: "بوت الألعاب @xBETxoBOT"
+        },
+        en: {
+            home: "Home",
+            telegram: "Telegram",
+            email: "Email",
+            bots: "Support Bots",
+            gameBot: "Game Bot",
+            promocode: "Promo Code",
+            copyBtn: "Copy Code",
+            copied: "Copied!",
+            profileTitle: "1xBET Arabic Blog",
+            profileDesc: "Latest News and Announcements",
+            telegramHeader: "Choose your country and contact us directly via Telegram",
+            emailHeader: "Choose your country and contact us directly via Email",
+            botHeader: "Choose your country and contact us via Telegram Bots",
+            gameBotHeader: "Try the new Game Bot now!",
+            footer: "Powered by <span>1xBET Arabic</span>",
+            loading: "Loading...",
+            promocodeText: "Use the code <strong>1X3RBI</strong> to get exclusive bonuses!",
+            newOffer: "New Offer!",
+            promocodeOffer: "Use code 1X3RBI to get a 200% bonus on your first deposit!",
+            matchToday: "Today's Match",
+            matchWeek: "Don't miss betting on the match of the week: Barcelona vs Real Madrid!",
+            newUpdate: "New Update",
+            telegramUpdate: "Telegram channels updated to provide better user support.",
+            gameBotNews: "Game Bot Launch!",
+            gameBotNewsContent: "Try the new Game Bot @xBETxoBOT for a unique entertainment experience!",
+            supportTeamEgypt: "Support Team - Egypt",
+            supportTeamMorocco: "Support Team - Morocco",
+            supportTeamMauritania: "Support Team - Mauritania",
+            supportTeamIraq: "Support Team - Iraq",
+            supportTeamAlgeria: "Support Team - Algeria",
+            supportTeamTunisia: "Support Team - Tunisia",
+            supportTeamDjibouti: "Support Team - Djibouti",
+            supportTeamJordan: "Support Team - Jordan",
+            supportTeamHaiti: "Support Team - Haiti",
+            supportTeamOther: "Other Arab Countries",
+            financialSupportBotIraq: "Financial Support Bot - Iraq",
+            financialSupportBotJordan: "Financial Support Bot - Jordan",
+            financialSupportBotAlgeria: "Financial Support Bot - Algeria",
+            gameBot: "Game Bot @xBETxoBOT"
+        },
+        fr: {
+            home: "Accueil",
+            telegram: "Télégramme",
+            email: "Email",
+            bots: "Bots de Support",
+            gameBot: "Bot de Jeu",
+            promocode: "Code Promo",
+            copyBtn: "Copier le Code",
+            copied: "Copié !",
+            profileTitle: "Blog 1xBET Arabe",
+            profileDesc: "Dernières Nouvelles et Annonces",
+            telegramHeader: "Choisissez votre pays et contactez-nous directement via Télégramme",
+            emailHeader: "Choisissez votre pays et contactez-nous directement par Email",
+            botHeader: "Choisissez votre pays et contactez-nous via les Bots Télégramme",
+            gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
+            footer: "Propulsé par <span>1xBET Arabe</span>",
+            loading: "Chargement...",
+            promocodeText: "Utilisez le code <strong>1X3RBI</strong> pour obtenir des bonus exclusifs !",
+            newOffer: "Nouvelle Offre !",
+            promocodeOffer: "Utilisez le code 1X3RBI pour obtenir un bonus de 200% sur votre premier dépôt !",
+            matchToday: "Match du Jour",
+            matchWeek: "Ne manquez pas de parier sur le match de la semaine : Barcelone contre Real Madrid !",
+            newUpdate: "Nouvelle Mise à Jour",
+            telegramUpdate: "Les chaînes Télégramme ont été mises à jour pour offrir un meilleur support aux utilisateurs.",
+            gameBotNews: "Lancement du Bot de Jeu !",
+            gameBotNewsContent: "Essayez le nouveau Bot de Jeu @xBETxoBOT pour une expérience de divertissement unique !",
+            supportTeamEgypt: "Équipe de Support - Égypte",
+            supportTeamMorocco: "Équipe de Support - Maroc",
+            supportTeamMauritania: "Équipe de Support - Mauritanie",
+            supportTeamIraq: "Équipe de Support - Irak",
+            supportTeamAlgeria: "Équipe de Support - Algérie",
+            supportTeamTunisia: "Équipe de Support - Tunisie",
+            supportTeamDjibouti: "Équipe de Support - Djibouti",
+            supportTeamJordan: "Équipe de Support - Jordanie",
+            supportTeamHaiti: "Équipe de Support - Haïti",
+            supportTeamOther: "Autres Pays Arabes",
+            financialSupportBotIraq: "Bot de Support Financier - Irak",
+            financialSupportBotJordan: "Bot de Support Financier - Jordanie",
+            financialSupportBotAlgeria: "Bot de Support Financier - Algérie",
+            gameBot: "Bot de Jeu @xBETxoBOT"
+        }
+    };
 
     function updateLinks(container, data, options = {}) {
         container.innerHTML = "";
-        const { isEmail = false, isBot = false, headerText = "" } = options;
+        const { isEmail = false, isBot = false, isGameBot = false, headerText = "" } = options;
+        const lang = document.documentElement.getAttribute("lang") || "ar";
         if (headerText) {
             const header = document.createElement("p");
-            header.textContent = headerText;
-            header.className = isBot ? "bot-header" : "email-header";
+            header.textContent = translations[lang][headerText];
+            header.className = isBot ? "bot-header" : isGameBot ? "game-bot-header" : "email-header";
             container.appendChild(header);
         }
         data.forEach(item => {
             const link = document.createElement("a");
             link.href = item.href;
-            link.className = isEmail ? "email-link Liquified" : "tg-link";
+            link.className = isEmail ? "email-link" : isGameBot ? "game-bot-link" : isBot ? "bot-link" : "tg-link";
             link.target = "_blank";
             link.rel = "noopener noreferrer";
-            link.innerHTML = isEmail ? item.text : `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+            link.innerHTML = isEmail ? translations[lang][item.text] : 
+                            (isBot || isGameBot ? `<img src="${item.icon}" alt="Icon" loading="lazy">${translations[lang][item.text]}` : 
+                                                 `<img src="${item.flag}" alt="Icon" loading="lazy">${item.text}`);
             container.appendChild(link);
         });
     }
 
     function updateNews() {
-        newsContent.innerHTML = "";
-        newsData.forEach(item => {
-            const newsItem = document.createElement("div");
-            newsItem.className = "news-item";
-            newsItem.innerHTML = `<h4>${item.title}</h4><p>${item.content}</p>`;
-            newsContent.appendChild(newsItem);
-        });
+        const lang = document.documentElement.getAttribute("lang") || "ar";
+        newsContent.innerHTML = `<div class='spinner'>${translations[lang].loading}</div>`;
+        setTimeout(() => {
+            newsContent.innerHTML = "";
+            newsData.forEach(item => {
+                const newsItem = document.createElement("div");
+                newsItem.className = "news-item";
+                newsItem.innerHTML = `<h4>${translations[lang][item.title]}</h4><p>${translations[lang][item.content]}</p>`;
+                newsContent.appendChild(newsItem);
+            });
+        }, 500);
     }
 
     function setActiveLink(link) {
@@ -82,60 +223,49 @@ document.addEventListener("DOMContentLoaded", () => {
             observer.disconnect();
             const targetId = link.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
-            const headerHeight = document.querySelector("header").offsetHeight;
+            const headerHeight = document.querySelector("header").getBoundingClientRect().height;
             window.scrollTo({
-                top: targetSection.offsetTop - headerHeight - 20,
+                top: targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20,
                 behavior: "smooth"
             });
             setActiveLink(link);
-            setTimeout(() => {
-                sections.forEach(section => observer.observe(section));
-            }, 1000);
+            setTimeout(() => sections.forEach(section => observer.observe(section)), 100);
         });
     });
 
     const sections = document.querySelectorAll(".section");
     const observerOptions = {
         root: null,
-        rootMargin: "-150px 0px -50px 0px",
-        threshold: 0.3
+        rootMargin: "-80px 0px -80px 0px",
+        threshold: 0.8
     };
 
     const observer = new IntersectionObserver((entries) => {
-        let maxRatio = 0;
-        let activeSection = null;
-
         entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-                maxRatio = entry.intersectionRatio;
-                activeSection = entry.target;
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                const correspondingLink = document.querySelector(`.nav-link[href='#${sectionId}']`);
+                if (correspondingLink) {
+                    setActiveLink(correspondingLink);
+                }
             }
         });
-
-        if (activeSection) {
-            const sectionId = activeSection.id;
-            const correspondingLink = document.querySelector(`.nav-link[href='#${sectionId}']`);
-            if (correspondingLink) {
-                setActiveLink(correspondingLink);
-            }
-        }
     }, observerOptions);
 
     sections.forEach(section => observer.observe(section));
 
-    // نسخ البروموكود
     if (copyBtn) {
         copyBtn.addEventListener("click", () => {
             copyPromocode();
-            copyBtn.textContent = "تم النسخ!";
-            setTimeout(() => {
-                copyBtn.textContent = "نسخ الكود";
-            }, 2000);
         });
     }
 
     if (scrollTopBtn) {
         window.addEventListener("scroll", () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            document.querySelector(".progress-bar").style.width = `${scrollPercentage}%`;
             if (window.scrollY > 300) {
                 scrollTopBtn.classList.add("active");
             } else {
@@ -147,33 +277,103 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    updateLinks(telegramLinks, telegramData);
-    updateLinks(emailLinks, emailData, { isEmail: true, headerText: "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني" });
-    updateLinks(botLinks, botData, { isBot: true, headerText: "اختر دولتك وراسلنا عبر بوتات تلغرام" });
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            document.body.setAttribute("data-theme", newTheme);
+            themeToggle.innerHTML = `<i class="fas fa-${newTheme === "light" ? "moon" : "sun"}"></i>`;
+            localStorage.setItem("theme", newTheme);
+        });
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.body.setAttribute("data-theme", savedTheme);
+        themeToggle.innerHTML = `<i class="fas fa-${savedTheme === "light" ? "moon" : "sun"}"></i>`;
+    }
+
+    if (langSwitch) {
+        langSwitch.addEventListener("change", (e) => {
+            const lang = e.target.value;
+            document.documentElement.setAttribute("lang", lang);
+            document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+            document.body.setAttribute("lang", lang);
+            
+            // تحديث النصوص
+            document.querySelectorAll("[data-translate]").forEach(element => {
+                const key = element.getAttribute("data-translate");
+                if (key === "footer" || key === "promocodeText") {
+                    element.innerHTML = translations[lang][key];
+                } else {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // تحديث الروابط والأخبار
+            updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
+            updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
+            updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
+            updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+            updateNews();
+
+            localStorage.setItem("lang", lang);
+        });
+        const savedLang = localStorage.getItem("lang") || "ar";
+        langSwitch.value = savedLang;
+        document.documentElement.setAttribute("lang", savedLang);
+        document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
+        document.body.setAttribute("lang", savedLang);
+        langSwitch.dispatchEvent(new Event("change"));
+    }
+
+    updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
+    updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
+    updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
+    updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
     updateNews();
     setActiveLink(document.querySelector(".nav-link.active"));
+
+    // فحص الصور
+    ["img/main.jpg", "img/logo.png", "img/game-bot.png"].forEach(url => {
+        const img = new Image();
+        img.src = url;
+        img.onerror = () => console.error(`فشل تحميل الصورة: ${url}`);
+    });
 });
 
 function copyPromocode() {
     const promocode = "1X3RBI";
     const statusElement = document.getElementById("copy-status");
+    const inputElement = document.querySelector(".promocode-input");
+    const copyBtn = document.getElementById("copy-promocode-btn");
+    const lang = document.documentElement.getAttribute("lang") || "ar";
     statusElement.textContent = "";
-
     if (!window.location.protocol.includes("https") && !window.location.hostname.includes("localhost")) {
-        statusElement.textContent = "يرجى تشغيل الموقع على HTTPS أو localhost لاستخدام خاصية النسخ.";
+        statusElement.textContent = translations[lang].copied;
+        inputElement.style.display = "block";
+        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1X3RBI");
         return;
     }
+    navigator.clipboard.writeText(promocode).then(() => {
+        statusElement.textContent = translations[lang].copied;
+        copyBtn.textContent = translations[lang].copied;
+        showToast(translations[lang].copied);
+        setTimeout(() => {
+            copyBtn.textContent = translations[lang].copyBtn;
+            statusElement.textContent = "";
+        }, 2000);
+    }).catch(() => {
+        statusElement.textContent = translations[lang].copied ? "فشل النسخ، انسخ يدويًا:" : "Failed to copy, please copy manually: ";
+        inputElement.style.display = "block";
+        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1X3RBI");
+    });
+}
 
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(promocode).then(() => {
-            statusElement.textContent = "تم نسخ الكود بنجاح!";
-        }).catch((err) => {
-            statusElement.textContent = "فشل النسخ باستخدام Clipboard API: " + err.message;
-            fallbackCopy(promocode);
-        });
-    } else {
-        fallbackCopy(promocode);
-    }
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.style.display = "block";
+    setTimeout(() => toast.style.display = "none", 2000);
 }
 
 function fallbackCopy(text) {
@@ -187,7 +387,7 @@ function fallbackCopy(text) {
     tempInput.setSelectionRange(0, 99999);
     try {
         const successful = document.execCommand("copy");
-        statusElement.textContent = successful ? "تم نسخ الكود بنجاح باستخدام الطريقة البديلة!" : "فشل النسخ، يرجى نسخه يدويًا: " + text;
+        statusElement.textContent = successful ? translations[document.documentElement.getAttribute("lang") || "ar"].copied : "فشل النسخ، يرجى نسخه يدويًا: " + text;
     } catch (err) {
         statusElement.textContent = "فشل النسخ: " + err.message + "، يرجى نسخه يدويًا: " + text;
     } finally {
