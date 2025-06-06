@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const telegramBtn = document.getElementById("telegramBtn");
-    const emailBtn = document.getElementById("emailBtn");
-    const botBtn = document.getElementById("botBtn");
-    const linksContainer = document.getElementById("links");
-    const buttonGroup = document.querySelector(".button-group");
+    const telegramBtn = document.querySelector(".nav-link[href='#telegram']");
+    const emailBtn = document.querySelector(".nav-link[href='#email']");
+    const botBtn = document.querySelector(".nav-link[href='#bots']");
+    const telegramLinks = document.getElementById("telegram-links");
+    const emailLinks = document.getElementById("email-links");
+    const botLinks = document.getElementById("bot-links");
+    const navLinks = document.querySelectorAll(".nav-link");
 
     const telegramData = [
         { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
@@ -29,66 +31,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const botData = [
         { href: "https://t.me/iraqpaymentssupport_bot", text: "بوت الدعم المالي - العراق", flag: "img/irq.png" },
-        { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" }
+        { href: "https://t.me/jordanpaymentssupport_bot", text: "بوت الدعم المالي - الأردن", flag: "img/jor.png" },
+        { href: "https://t.me/algeriapaymentssupport_bot", text: "بوت الدعم المالي - الجزائر", flag: "img/dza.png" }
     ];
 
-    function reorderButtons(selectedBtn) {
-        const buttons = [emailBtn, telegramBtn, botBtn];
-        const otherButtons = buttons.filter(btn => btn !== selectedBtn);
-        buttonGroup.innerHTML = "";
-        buttonGroup.appendChild(otherButtons[0]);
-        buttonGroup.appendChild(selectedBtn);
-        buttonGroup.appendChild(otherButtons[1]);
+    function updateLinks(container, data, isEmail = false) {
+        container.innerHTML = "";
+        if (!isEmail) {
+            data.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.href;
+                link.className = "tg-link";
+                link.target = "_blank";
+                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+                container.appendChild(link);
+            });
+        } else {
+            const header = document.createElement("p");
+            header.textContent = "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني";
+            header.className = "email-header";
+            container.appendChild(header);
+            data.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.href;
+                link.className = "email-link";
+                link.target = "_blank";
+                link.textContent = item.text;
+                container.appendChild(link);
+            });
+        }
+    }
+
+    function setActiveLink(link) {
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
     }
 
     telegramBtn.addEventListener("click", () => {
-        linksContainer.innerHTML = "";
-        telegramData.forEach(item => {
-            const link = document.createElement("a");
-            link.href = item.href;
-            link.className = "tg-link";
-            link.target = "_blank";
-            link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
-            linksContainer.appendChild(link);
-        });
-        reorderButtons(telegramBtn);
+        updateLinks(telegramLinks, telegramData);
+        setActiveLink(telegramBtn);
     });
 
     emailBtn.addEventListener("click", () => {
-        linksContainer.innerHTML = "";
-        const emailHeader = document.createElement("p");
-        emailHeader.textContent = "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني";
-        emailHeader.className = "email-header";
-        linksContainer.appendChild(emailHeader);
-
-        emailData.forEach(item => {
-            const link = document.createElement("a");
-            link.href = item.href;
-            link.className = "email-link";
-            link.target = "_blank";
-            link.textContent = item.text;
-            linksContainer.appendChild(link);
-        });
-        reorderButtons(emailBtn);
+        updateLinks(emailLinks, emailData, true);
+        setActiveLink(emailBtn);
     });
 
     botBtn.addEventListener("click", () => {
-        linksContainer.innerHTML = "";
-        const botHeader = document.createElement("p");
-        botHeader.textContent = "اختر دولتك وراسلنا عبر بوتات تلغرام";
-        botHeader.className = "bot-header";
-        linksContainer.appendChild(botHeader);
-
-        botData.forEach(item => {
-            const link = document.createElement("a");
-            link.href = item.href;
-            link.className = "tg-link";
-            link.target = "_blank";
-            link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
-            linksContainer.appendChild(link);
-        });
-        reorderButtons(botBtn);
+        updateLinks(botLinks, botData);
+        setActiveLink(botBtn);
     });
 
-    reorderButtons(telegramBtn);
+    // Initialize with Telegram links
+    updateLinks(telegramLinks, telegramData);
+    setActiveLink(telegramBtn);
+
+    // Copy Promocode function
+    window.copyPromocode = function() {
+        navigator.clipboard.writeText("PROMO2025").then(() => {
+            alert("تم نسخ الكود: PROMO2025");
+        }).catch(() => {
+            alert("فشل نسخ الكود، حاول مرة أخرى");
+        });
+    };
 });
