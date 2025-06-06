@@ -135,7 +135,7 @@ header {
 }
 
 .section {
-    margin: 40px 0;
+    margin: 60px 0;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease forwards;
@@ -257,6 +257,12 @@ header {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-icons a i {
+    font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free" !important;
+    line-height: 50px;
 }
 
 .social-icons a:hover {
@@ -293,7 +299,7 @@ header {
 }
 
 .links .tg-link img {
-    width: 40px;
+    занятийwidth: 40px;
     height: 40px;
     margin-left: 15px;
     border-radius: 50%;

@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
+            observer.disconnect(); // إيقاف المراقبة
             const targetId = link.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
             const headerHeight = document.querySelector("header").offsetHeight;
@@ -88,6 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 behavior: "smooth"
             });
             setActiveLink(link);
+            setTimeout(() => {
+                sections.forEach(section => observer.observe(section)); // إعادة تفعيل المراقبة
+            }, 1000);
         });
     });
 
@@ -95,20 +99,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".section");
     const observerOptions = {
         root: null,
-        rootMargin: "-100px 0px 0px 0px",
-        threshold: 0.5
+        rootMargin: "-150px 0px -50px 0px",
+        threshold: 0.3
     };
 
     const observer = new IntersectionObserver((entries) => {
+        let maxRatio = 0;
+        let activeSection = null;
+
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                const correspondingLink = document.querySelector(`.nav-link[href='#${sectionId}']`);
-                if (correspondingLink) {
-                    setActiveLink(correspondingLink);
-                }
+            if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+                maxRatio = entry.intersectionRatio;
+                activeSection = entry.target;
             }
         });
+
+        if (activeSection) {
+            const sectionId = activeSection.id;
+            const correspondingLink = document.querySelector(`.nav-link[href='#${sectionId}']`);
+            if (correspondingLink) {
+                setActiveLink(correspondingLink);
+            }
+        }
     }, observerOptions);
 
     sections.forEach(section => observer.observe(section));
