@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailBtn = document.querySelector(".nav-link[href='#email']");
     const botBtn = document.querySelector(".nav-link[href='#bots']");
     const homeBtn = document.querySelector(".nav-link[href='#home']");
+    const copyBtn = document.getElementById("copy-promocode-btn"); // زر النسخ
     const telegramLinks = document.getElementById("telegram-links");
     const emailLinks = document.getElementById("email-links");
     const botLinks = document.getElementById("bot-links");
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const newsData = [
-        { title: "عرض جديد!", content: "استخدم كود PROMO2025 للحصول على مكافأة 100% على إيداعك الأول!" },
+        { title: "عرض جديد!", content: "استخدم كود 1X3RBI للحصول على مكافأة 100% على إيداعك الأول!" },
         { title: "مباراة اليوم", content: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!" },
         { title: "تحديث جديد", content: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين." }
     ];
@@ -98,6 +99,15 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.add("active");
     }
 
+    if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+            console.log("زر النسخ تم النقر عليه!");
+            copyPromocode();
+        });
+    } else {
+        console.error("زر النسخ غير موجود!");
+    }
+
     telegramBtn.addEventListener("click", () => {
         updateLinks(telegramLinks, telegramData);
         setActiveLink(telegramBtn);
@@ -123,8 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveLink(homeBtn);
 });
 
-window.copyPromocode = function() {
-    const promocode = "PROMO2025";
+function copyPromocode() {
+    console.log("دالة copyPromocode تُستدعى!");
+    const promocode = "1X3RBI";
     const statusElement = document.getElementById("copy-status");
 
     statusElement.textContent = "";
@@ -144,7 +155,7 @@ window.copyPromocode = function() {
     } else {
         fallbackCopy(promocode);
     }
-};
+}
 
 function fallbackCopy(text) {
     const statusElement = document.getElementById("copy-status");
