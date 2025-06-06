@@ -1,14 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const telegramBtn = document.querySelector(".nav-link[href='#telegram']");
-    const emailBtn = document.querySelector(".nav-link[href='#email']");
-    const botBtn = document.querySelector(".nav-link[href='#bots']");
-    const homeBtn = document.querySelector(".nav-link[href='#home']");
-    const copyBtn = document.getElementById("copy-promocode-btn"); // زر النسخ
+    const navLinks = document.querySelectorAll(".nav-link");
     const telegramLinks = document.getElementById("telegram-links");
     const emailLinks = document.getElementById("email-links");
     const botLinks = document.getElementById("bot-links");
     const newsContent = document.getElementById("news-content");
-    const navLinks = document.querySelectorAll(".nav-link");
+    const copyBtn = document.getElementById("copy-promocode-btn");
+    const scrollTopBtn = document.querySelector(".scroll-top-btn");
 
     const telegramData = [
         { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
@@ -39,49 +36,29 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const newsData = [
-        { title: "عرض جديد!", content: "استخدم كود 1X3RBI للحصول على مكافأة 100% على إيداعك الأول!" },
+        { title: "عرض جديد!", content: "استخدم كود 1X3RBI للحصول على مكافأة 200% على إيداعك الأول!" },
         { title: "مباراة اليوم", content: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!" },
         { title: "تحديث جديد", content: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين." }
     ];
 
-    function updateLinks(container, data, isEmail = false, isBot = false) {
+    function updateLinks(container, data, options = {}) {
         container.innerHTML = "";
-        if (isEmail) {
+        const { isEmail = false, isBot = false, headerText = "" } = options;
+        if (headerText) {
             const header = document.createElement("p");
-            header.textContent = "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني";
-            header.className = "email-header";
+            header.textContent = headerText;
+            header.className = isBot ? "bot-header" : "email-header";
             container.appendChild(header);
-            data.forEach(item => {
-                const link = document.createElement("a");
-                link.href = item.href;
-                link.className = "email-link";
-                link.target = "_blank";
-                link.textContent = item.text;
-                container.appendChild(link);
-            });
-        } else if (isBot) {
-            const header = document.createElement("p");
-            header.textContent = "اختر دولتك وراسلنا عبر بوتات تلغرام";
-            header.className = "bot-header";
-            container.appendChild(header);
-            data.forEach(item => {
-                const link = document.createElement("a");
-                link.href = item.href;
-                link.className = "tg-link";
-                link.target = "_blank";
-                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
-                container.appendChild(link);
-            });
-        } else {
-            data.forEach(item => {
-                const link = document.createElement("a");
-                link.href = item.href;
-                link.className = "tg-link";
-                link.target = "_blank";
-                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
-                container.appendChild(link);
-            });
         }
+        data.forEach(item => {
+            const link = document.createElement("a");
+            link.href = item.href;
+            link.className = isEmail ? "email-link" : "tg-link";
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.innerHTML = isEmail ? item.text : `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+            container.appendChild(link);
+        });
     }
 
     function updateNews() {
@@ -99,45 +76,79 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.add("active");
     }
 
+    // تنقل سلس مع تعويض الـ header
+    navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+            const headerHeight = document.querySelector("header").offsetHeight;
+            window.scrollTo({
+                top: targetSection.offsetTop - headerHeight - 20,
+                behavior: "smooth"
+            });
+            setActiveLink(link);
+        });
+    });
+
+    // مراقبة التمرير لتنشيط الأزرار
+    const sections = document.querySelectorAll(".section");
+    const observerOptions = {
+        root: null,
+        rootMargin: "-100px 0px 0px 0px",
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                const correspondingLink = document.querySelector(`.nav-link[href='#${sectionId}']`);
+                if (correspondingLink) {
+                    setActiveLink(correspondingLink);
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // نسخ البروموكود
     if (copyBtn) {
         copyBtn.addEventListener("click", () => {
-            console.log("زر النسخ تم النقر عليه!");
             copyPromocode();
+            copyBtn.textContent = "تم النسخ!";
+            setTimeout(() => {
+                copyBtn.textContent = "نسخ الكود";
+            }, 2000);
         });
-    } else {
-        console.error("زر النسخ غير موجود!");
     }
 
-    telegramBtn.addEventListener("click", () => {
-        updateLinks(telegramLinks, telegramData);
-        setActiveLink(telegramBtn);
-    });
+    // زر العودة للأعلى
+    if (scrollTopBtn) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("active");
+            } else {
+                scrollTopBtn.classList.remove("active");
+            }
+        });
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
 
-    emailBtn.addEventListener("click", () => {
-        updateLinks(emailLinks, emailData, true);
-        setActiveLink(emailBtn);
-    });
-
-    botBtn.addEventListener("click", () => {
-        updateLinks(botLinks, botData, false, true);
-        setActiveLink(botBtn);
-    });
-
-    homeBtn.addEventListener("click", () => {
-        updateNews();
-        setActiveLink(homeBtn);
-    });
-
+    // تحديث المحتوى عند التحميل
     updateLinks(telegramLinks, telegramData);
+    updateLinks(emailLinks, emailData, { isEmail: true, headerText: "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني" });
+    updateLinks(botLinks, botData, { isBot: true, headerText: "اختر دولتك وراسلنا عبر بوتات تلغرام" });
     updateNews();
-    setActiveLink(homeBtn);
+    setActiveLink(document.querySelector(".nav-link[href='#home']"));
 });
 
 function copyPromocode() {
-    console.log("دالة copyPromocode تُستدعى!");
     const promocode = "1X3RBI";
     const statusElement = document.getElementById("copy-status");
-
     statusElement.textContent = "";
 
     if (!window.location.protocol.includes("https") && !window.location.hostname.includes("localhost")) {
@@ -168,11 +179,7 @@ function fallbackCopy(text) {
     tempInput.setSelectionRange(0, 99999);
     try {
         const successful = document.execCommand("copy");
-        if (successful) {
-            statusElement.textContent = "تم نسخ الكود بنجاح باستخدام الطريقة البديلة!";
-        } else {
-            statusElement.textContent = "فشل النسخ، يرجى نسخه يدويًا: " + text;
-        }
+        statusElement.textContent = successful ? "تم نسخ الكود بنجاح باستخدام الطريقة البديلة!" : "فشل النسخ، يرجى نسخه يدويًا: " + text;
     } catch (err) {
         statusElement.textContent = "فشل النسخ: " + err.message + "، يرجى نسخه يدويًا: " + text;
     } finally {
