@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         data.forEach(item => {
             const link = document.createElement("a");
             link.href = item.href;
-            link.className = isEmail ? "email-link" : "tg-link";
+            link.className = isEmail ? "email-link Liquified" : "tg-link";
             link.target = "_blank";
             link.rel = "noopener noreferrer";
             link.innerHTML = isEmail ? item.text : `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
@@ -76,11 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.add("active");
     }
 
-    // تنقل سلس مع تعويض الـ header
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-            observer.disconnect(); // إيقاف المراقبة
+            observer.disconnect();
             const targetId = link.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
             const headerHeight = document.querySelector("header").offsetHeight;
@@ -90,12 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             setActiveLink(link);
             setTimeout(() => {
-                sections.forEach(section => observer.observe(section)); // إعادة تفعيل المراقبة
+                sections.forEach(section => observer.observe(section));
             }, 1000);
         });
     });
 
-    // مراقبة التمرير لتنشيط الأزرار
     const sections = document.querySelectorAll(".section");
     const observerOptions = {
         root: null,
@@ -136,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // زر العودة للأعلى
     if (scrollTopBtn) {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 300) {
@@ -150,12 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // تحديث المحتوى عند التحميل
     updateLinks(telegramLinks, telegramData);
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني" });
     updateLinks(botLinks, botData, { isBot: true, headerText: "اختر دولتك وراسلنا عبر بوتات تلغرام" });
     updateNews();
-    setActiveLink(document.querySelector(".nav-link[href='#home']"));
+    setActiveLink(document.querySelector(".nav-link.active"));
 });
 
 function copyPromocode() {
