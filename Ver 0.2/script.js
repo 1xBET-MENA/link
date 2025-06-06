@@ -2,9 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const telegramBtn = document.querySelector(".nav-link[href='#telegram']");
     const emailBtn = document.querySelector(".nav-link[href='#email']");
     const botBtn = document.querySelector(".nav-link[href='#bots']");
+    const homeBtn = document.querySelector(".nav-link[href='#home']");
     const telegramLinks = document.getElementById("telegram-links");
     const emailLinks = document.getElementById("email-links");
     const botLinks = document.getElementById("bot-links");
+    const newsContent = document.getElementById("news-content");
     const navLinks = document.querySelectorAll(".nav-link");
 
     const telegramData = [
@@ -35,18 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/algeriapaymentssupport_bot", text: "بوت الدعم المالي - الجزائر", flag: "img/dza.png" }
     ];
 
-    function updateLinks(container, data, isEmail = false) {
+    const newsData = [
+        { title: "عرض جديد!", content: "استخدم كود PROMO2025 للحصول على مكافأة 100% على إيداعك الأول!" },
+        { title: "مباراة اليوم", content: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!" },
+        { title: "تحديث جديد", content: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين." }
+    ];
+
+    function updateLinks(container, data, isEmail = false, isBot = false) {
         container.innerHTML = "";
-        if (!isEmail) {
-            data.forEach(item => {
-                const link = document.createElement("a");
-                link.href = item.href;
-                link.className = "tg-link";
-                link.target = "_blank";
-                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
-                container.appendChild(link);
-            });
-        } else {
+        if (isEmail) {
             const header = document.createElement("p");
             header.textContent = "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني";
             header.className = "email-header";
@@ -59,7 +58,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.textContent = item.text;
                 container.appendChild(link);
             });
+        } else if (isBot) {
+            const header = document.createElement("p");
+            header.textContent = "اختر دولتك وراسلنا عبر بوتات تلغرام";
+            header.className = "bot-header";
+            container.appendChild(header);
+            data.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.href;
+                link.className = "tg-link";
+                link.target = "_blank";
+                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+                container.appendChild(link);
+            });
+        } else {
+            data.forEach(item => {
+                const link = document.createElement("a");
+                link.href = item.href;
+                link.className = "tg-link";
+                link.target = "_blank";
+                link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+                container.appendChild(link);
+            });
         }
+    }
+
+    function updateNews() {
+        newsContent.innerHTML = "";
+        newsData.forEach(item => {
+            const newsItem = document.createElement("div");
+            newsItem.className = "news-item";
+            newsItem.innerHTML = `<h4>${item.title}</h4><p>${item.content}</p>`;
+            newsContent.appendChild(newsItem);
+        });
     }
 
     function setActiveLink(link) {
@@ -78,20 +109,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     botBtn.addEventListener("click", () => {
-        updateLinks(botLinks, botData);
+        updateLinks(botLinks, botData, false, true);
         setActiveLink(botBtn);
     });
 
-    // Initialize with Telegram links
-    updateLinks(telegramLinks, telegramData);
-    setActiveLink(telegramBtn);
+    homeBtn.addEventListener("click", () => {
+        updateNews();
+        setActiveLink(homeBtn);
+    });
 
-    // Copy Promocode function
-    window.copyPromocode = function() {
-        navigator.clipboard.writeText("PROMO2025").then(() => {
-            alert("تم نسخ الكود: PROMO2025");
-        }).catch(() => {
-            alert("فشل نسخ الكود، حاول مرة أخرى");
-        });
-    };
+    updateLinks(telegramLinks, telegramData);
+    updateNews();
+    setActiveLink(homeBtn);
 });
+
+window.copyPromocode = function() {
+    const promocode = "PROMO2025";
+    const statusElement = document.getElementById("copy-status");
+
+    statusElement.textContent = "";
+
+    if (!window.location.protocol.includes("https") && !window.location.hostname.includes("localhost")) {
+        statusElement.textContent = "يرجى تشغيل الموقع على HTTPS أو localhost لاستخدام خاصية النسخ.";
+        return;
+    }
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(promocode).then(() => {
+            statusElement.textContent = "تم نسخ الكود بنجاح!";
+        }).catch((err) => {
+            statusElement.textContent = "فشل النسخ باستخدام Clipboard API: " + err.message;
+            fallbackCopy(promocode);
+        });
+    } else {
+        fallbackCopy(promocode);
+    }
+};
+
+function fallbackCopy(text) {
+    const statusElement = document.getElementById("copy-status");
+    const tempInput = document.createElement("textarea");
+    tempInput.style.position = "absolute";
+    tempInput.style.left = "-9999px";
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    try {
+        const successful = document.execCommand("copy");
+        if (successful) {
+            statusElement.textContent = "تم نسخ الكود بنجاح باستخدام الطريقة البديلة!";
+        } else {
+            statusElement.textContent = "فشل النسخ، يرجى نسخه يدويًا: " + text;
+        }
+    } catch (err) {
+        statusElement.textContent = "فشل النسخ: " + err.message + "، يرجى نسخه يدويًا: " + text;
+    } finally {
+        document.body.removeChild(tempInput);
+    }
+}
