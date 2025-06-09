@@ -1,15 +1,15 @@
 :root {
-    --primary-color: #D4AF37;
-    --dark-bg: #1B263B;
-    --light-bg: rgba(27, 38, 59, 0.7);
-    --text-color: #FFFFFF;
-    --secondary-text: #CCCCCC;
+    --primary-color: #3aade2;
+    --dark-bg: #21366d;
+    --light-bg: rgba(33, 54, 109, 0.8);
+    --text-color: #ffffff;
+    --secondary-text: #d1e0ff;
     --transition: all 0.3s ease;
-    --light-primary: #C19A2E;
-    --light-dark-bg: #E8ECEF;
-    --light-light-bg: rgba(232, 236, 239, 0.9);
-    --light-text: #1A2525;
-    --light-secondary-text: #4A6060;
+    --light-primary: #3aade2;
+    --light-dark-bg: #f5f9ff;
+    --light-light-bg: rgba(255, 255, 255, 0.95);
+    --light-text: #21366d;
+    --light-secondary-text: #5a7ca8;
 }
 
 [data-theme="light"] {
@@ -33,7 +33,7 @@ html {
 
 body {
     font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
-    background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
+    background: linear-gradient(135deg, #21366d, #2a4a8c);
     color: var(--text-color);
     text-align: center;
     min-height: 100vh;
@@ -41,6 +41,10 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     position: relative;
+}
+
+body[data-theme="light"] {
+    background: linear-gradient(135deg, #ffffff, #e6f0ff); /* تدرج أبيض إلى أزرق فاتح */
 }
 
 body[data-theme="light"]::before {
@@ -54,7 +58,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#glow)"><circle cx="10%" cy="20%" r="2" fill="#D4AF37" opacity="0.3"><animate attributeName="cy" values="20%;80%;20%" dur="10s" repeatCount="indefinite"/></circle><circle cx="30%" cy="50%" r="1" fill="#D4AF37" opacity="0.2"><animate attributeName="cy" values="50%;90%;50%" dur="15s" repeatCount="indefinite"/></circle><circle cx="70%" cy="30%" r="3" fill="#D4AF37" opacity="0.4"><animate attributeName="cy" values="30%;70%;30%" dur="12s" repeatCount="indefinite"/></circle></g></svg>') no-repeat;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#glow)"><circle cx="10%" cy="20%" r="2" fill="#3aade2" opacity="0.3"><animate attributeName="cy" values="20%;80%;20%" dur="10s" repeatCount="indefinite"/></circle><circle cx="30%" cy="50%" r="1" fill="#3aade2" opacity="0.2"><animate attributeName="cy" values="50%;90%;50%" dur="15s" repeatCount="indefinite"/></circle><circle cx="70%" cy="30%" r="3" fill="#3aade2" opacity="0.4"><animate attributeName="cy" values="30%;70%;30%" dur="12s" repeatCount="indefinite"/></circle></g></svg>') no-repeat;
     background-attachment: fixed;
     z-index: -1;
 }
@@ -65,7 +69,8 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .header-container {
@@ -105,15 +110,14 @@ header {
     font-size: 16px;
     font-weight: 600;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: var(--transition);
-    opacity: 0.7;
+    opacity: 0.9;
     position: relative;
-    overflow: hidden;
 }
 
 .nav-link:hover {
-    background: rgba(212, 175, 55, 0.2);
+    background: rgba(58, 173, 226, 0.2);
     color: var(--text-color);
     transform: translateY(-2px);
     opacity: 1;
@@ -121,26 +125,9 @@ header {
 
 .nav-link.active {
     background: var(--primary-color);
-    color: var(--dark-bg);
+    color: #ffffff;
     transform: translateY(-2px);
-    opacity: 1;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    background: rgba(255, 255, 255, 0.3);
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.nav-link:active::after {
-    width: 200px;
-    height: 200px;
+    box-shadow: 0 0 12px rgba(58, 173, 226, 0.4);
 }
 
 .container {
@@ -150,8 +137,8 @@ header {
     background: var(--light-bg);
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
     flex-grow: 1;
 }
 
@@ -206,11 +193,12 @@ header {
     border-radius: 50%;
     border: 4px solid var(--primary-color);
     margin-bottom: 15px;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
 }
 
 .profile img:hover {
     transform: rotate(360deg);
+    box-shadow: 0 0 15px rgba(58, 173, 226, 0.5);
 }
 
 .profile h2 {
@@ -238,9 +226,9 @@ header {
 }
 
 .news-item {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: right;
     transition: var(--transition);
 }
@@ -252,7 +240,7 @@ body[lang="fr"] .news-item {
 
 .news-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 5px 15px rgba(58, 173, 226, 0.3);
 }
 
 .news-item h4 {
@@ -281,7 +269,7 @@ body[lang="fr"] .news-item {
     height: 50px;
     display: grid;
     place-items: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     transition: var(--transition);
     text-decoration: none;
@@ -294,9 +282,9 @@ body[lang="fr"] .news-item {
 
 .social-icons a:hover {
     background: var(--primary-color);
-    color: var(--dark-bg);
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    color: #ffffff;
+    transform: eosin-scale(1.1);
+    box-shadow: 0 0 8px rgba(58, 173, 226, 0.5);
 }
 
 .links {
@@ -312,7 +300,7 @@ body[lang="fr"] .news-item {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     color: var(--text-color);
     font-family: 'Noto Sans Arabic', sans-serif;
     font-weight: 500;
@@ -327,7 +315,7 @@ body[lang="fr"] .news-item {
 
 body[lang="en"] .links .tg-link, body[lang="en"] .links .bot-link, 
 body[lang="en"] .links .email-link, body[lang="en"] .links .game-bot-link,
-body[lang="fr"] .links .tg-link, body[lang="fr"] .links .bot-link, 
+body[lang="fr"] .links .tg-link, body[lang="fr"] . dente-bot-link, 
 body[lang="fr"] .links .email-link, body[lang="fr"] .links .game-bot-link {
     justify-content: flex-start;
     flex-direction: row;
@@ -355,9 +343,9 @@ body[lang="fr"] .links .game-bot-link img {
 }
 
 .links .tg-link:hover, .links .bot-link:hover, .links .email-link:hover, .links .game-bot-link:hover {
-    background: rgba(212, 175, 55, 0.2);
+    background: rgba(58, 173, 226, 0.2);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 5px 15px rgba(58, 173, 226, 0.3);
 }
 
 .email-header, .bot-header, .game-bot-header {
@@ -369,7 +357,7 @@ body[lang="fr"] .links .game-bot-link img {
 }
 
 .promocode-content {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     padding: 25px;
     border-radius: 15px;
     text-align: center;
@@ -400,27 +388,27 @@ body[lang="fr"] .links .game-bot-link img {
 
 .copy-btn {
     background: var(--primary-color);
-    color: var(--dark-bg);
+    color: #ffffff;
     border: none;
     padding: 12px 25px;
     font-family: 'Tajawal', sans-serif;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
 }
 
 .copy-btn:hover {
-    background: #E8C69F;
+    background: #5bc0f0;
     transform: scale(1.05);
 }
 
 .copy-btn:active {
     transform: scale(0.95);
-    box-shadow: 0 0 10px var(--primary-color);
+    box-shadow: 0 0 10px rgba(58, 173, 226, 0.5);
 }
 
 .copy-btn::after {
@@ -451,7 +439,7 @@ body[lang="fr"] .links .game-bot-link img {
     bottom: 20px;
     right: 20px;
     background: var(--primary-color);
-    color: var(--dark-bg);
+    color: #ffffff;
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -460,7 +448,7 @@ body[lang="fr"] .links .game-bot-link img {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
 }
 
