@@ -1,14 +1,14 @@
 :root {
-    --primary-color: #ff6f61;
-    --dark-bg: #1a3c34;
-    --light-bg: rgba(26, 60, 52, 0.8);
+    --primary-color: #3aade2;
+    --dark-bg: #21366d;
+    --light-bg: rgba(33, 54, 109, 0.8);
     --text-color: #ffffff;
     --secondary-text: #d1e0ff;
     --transition: all 0.3s ease;
-    --light-primary: #ff6f61;
-    --light-dark-bg: #f4f7f2;
+    --light-primary: #3aade2;
+    --light-dark-bg: #f5f9ff;
     --light-light-bg: rgba(244, 247, 242, 0.95);
-    --light-text: #1a3c34;
+    --light-text: #21366d;
     --light-secondary-text: #5a7ca8;
 }
 
@@ -33,7 +33,7 @@ html {
 
 body {
     font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif;
-    background: linear-gradient(135deg, #1a3c34, #2a5a4e);
+    background: linear-gradient(135deg, #21366d, #2a4a8c);
     color: var(--text-color);
     text-align: center;
     min-height: 100vh;
@@ -44,7 +44,7 @@ body {
 }
 
 body[data-theme="light"] {
-    background: linear-gradient(135deg, #ffffff, #e6f0e6);
+    background: linear-gradient(135deg, #ffffff, #e6f0ff);
 }
 
 body[data-theme="light"]::before {
