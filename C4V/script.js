@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             copyBtn: "نسخ الكود",
             copied: "تم النسخ!",
             copyPromocodeAria: "نسخ بروموكود REELGOLD50X",
-            profileTitle: "مدونة Cash 4 Views",
+            profileTitle: "مسابقة Cash 4 Views",
             profileDesc: "آخر الأخبار والإعلانات",
             contactHeader: "تواصلوا معنا عبر تلغرام",
             footer: "Powered by <span>Cash 4 Views</span>",
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             copyBtn: "Copy Code",
             copied: "Copied!",
             copyPromocodeAria: "Copy promo code REELGOLD50X",
-            profileTitle: "Cash 4 Views Blog",
+            profileTitle: "Cash 4 Views Competition",
             profileDesc: "Latest News and Announcements",
             contactHeader: "Contact us via Telegram",
             footer: "Powered by <span>Cash 4 Views</span>",
@@ -157,13 +157,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // تحديث aria-label
                 document.querySelectorAll("[data-aria-label]").forEach(element => {
                     const key = element.getAttribute("data-aria-label");
                     element.setAttribute("aria-label", translations[lang][key]);
                 });
 
-                // تحديث الروابط والأخبار
                 updateLinks(contactLinks, contactData, { headerText: "contactHeader" });
                 updateNews();
 
