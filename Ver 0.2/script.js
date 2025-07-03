@@ -1,3 +1,23 @@
+const loadingTexts = {
+    ar: ["جاري التحميل...", "لحظات فقط...", "يتم الآن التحميل..."],
+    en: ["Loading...", "Just a moment...", "Fetching now..."],
+    fr: ["Chargement...", "Un instant...", "Récupération en cours..."]
+};
+
+function updateLoadingText() {
+    const lang = document.documentElement.getAttribute("lang") || "ar";
+    const loadingTextElement = document.querySelector(".loading-text");
+    if (loadingTextElement) {
+        let index = 0;
+        const updateText = () => {
+            loadingTextElement.textContent = loadingTexts[lang][index];
+            index = (index + 1) % loadingTexts[lang].length;
+        };
+        updateText();
+        return setInterval(updateText, 2000);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".nav-link");
     const telegramLinks = document.getElementById("telegram-links");
@@ -8,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const copyBtn = document.getElementById("copy-promocode-btn");
     const scrollTopBtn = document.querySelector(".scroll-top-btn");
     const themeToggle = document.querySelector(".theme-toggle");
-    const langSwitch = document.querySelector(".lang-switch");
+    const langDropdown = document.querySelector(".lang-dropdown");
+    const langOptions = document.querySelectorAll(".lang-option");
 
     const telegramData = [
         { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
@@ -191,8 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
             link.className = isEmail ? "email-link" : isGameBot ? "game-bot-link" : isBot ? "bot-link" : "tg-link";
             link.target = "_blank";
             link.rel = "noopener noreferrer";
-            link.innerHTML = isEmail ? translations[lang][item.text] : 
-                            (isBot || isGameBot ? `<img src="${item.icon}" alt="Icon" loading="lazy">${translations[lang][item.text]}` : 
+            link.innerHTML = isEmail ? translations[lang][item.text] :
+                            (isBot || isGameBot ? `<img src="${item.icon}" alt="Icon" loading="lazy">${translations[lang][item.text]}` :
                                                  `<img src="${item.flag}" alt="Icon" loading="lazy">${item.text}`);
             container.appendChild(link);
         });
@@ -200,8 +221,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateNews() {
         const lang = document.documentElement.getAttribute("lang") || "ar";
-        newsContent.innerHTML = `<div class='spinner'>${translations[lang].loading}</div>`;
+        newsContent.innerHTML = `<div class='spinner'><i class='fas fa-spinner'></i><span class='loading-text' data-loading-text></span></div>`;
+        const loadingInterval = updateLoadingText();
         setTimeout(() => {
+            clearInterval(loadingInterval);
             newsContent.innerHTML = "";
             newsData.forEach(item => {
                 const newsItem = document.createElement("div");
@@ -292,38 +315,47 @@ document.addEventListener("DOMContentLoaded", () => {
         themeToggle.innerHTML = `<i class="fas fa-${savedTheme === "light" ? "moon" : "sun"}"></i>`;
     }
 
-    if (langSwitch) {
-        langSwitch.addEventListener("change", (e) => {
-            const lang = e.target.value;
-            document.documentElement.setAttribute("lang", lang);
-            document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-            document.body.setAttribute("lang", lang);
-            
-            // تحديث النصوص
-            document.querySelectorAll("[data-translate]").forEach(element => {
-                const key = element.getAttribute("data-translate");
-                if (key === "footer" || key === "promocodeText") {
-                    element.innerHTML = translations[lang][key];
-                } else {
-                    element.textContent = translations[lang][key];
-                }
+    if (langDropdown) {
+        langOptions.forEach(option => {
+            option.addEventListener("click", () => {
+                const lang = option.getAttribute("data-lang");
+                document.documentElement.setAttribute("lang", lang);
+                document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+                document.body.setAttribute("lang", lang);
+
+                // تحديث النصوص
+                document.querySelectorAll("[data-translate]").forEach(element => {
+                    const key = element.getAttribute("data-translate");
+                    if (key === "footer" || key === "promocodeText") {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+
+                // تحديث الروابط والأخبار
+                updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
+                updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
+                updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
+                updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+                updateNews();
+
+                localStorage.setItem("lang", lang);
             });
-
-            // تحديث الروابط والأخبار
-            updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
-            updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
-            updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-            updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
-            updateNews();
-
-            localStorage.setItem("lang", lang);
         });
+
         const savedLang = localStorage.getItem("lang") || "ar";
-        langSwitch.value = savedLang;
         document.documentElement.setAttribute("lang", savedLang);
         document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
         document.body.setAttribute("lang", savedLang);
-        langSwitch.dispatchEvent(new Event("change"));
+        document.querySelectorAll("[data-translate]").forEach(element => {
+            const key = element.getAttribute("data-translate");
+            if (key === "footer" || key === "promocodeText") {
+                element.innerHTML = translations[savedLang][key];
+            } else {
+                element.textContent = translations[savedLang][key];
+            }
+        });
     }
 
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
