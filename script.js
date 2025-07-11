@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "mailto:processing-morocco@1xbet-team.com", text: "فريق الدعم - المغرب" },
         { href: "mailto:processing-mauritania@1xbet-team.com", text: "فريق الدعم - موريتانيا" },
         { href: "mailto:processing-iq@1xbet-team.com", text: "فريق الدعم - العراق" },
-        { href: "mailto:processing-algeria@1xbet-team.com", text: "فريق الدعم - الجزائر" },
+        { href: "mailto:processing-algeria@email.1xbet-team.com", text: "فريق الدعم - الجزائر" },
         { href: "mailto:processing-tunisia@1xbet-team.com", text: "فريق الدعم - تونس" },
         { href: "mailto:processing-djibouti@1xbet-team.com", text: "فريق الدعم - جيبوتي" },
         { href: "mailto:processing-jor@1xbet-team.com", text: "فريق الدعم - الأردن" },
