@@ -90,7 +90,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 3px;
-    min-height: 400px; /* Added for consistent height */
+    min-height: 400px;
 }
 
 .links .tg-link {
@@ -182,15 +182,15 @@ body {
 }
 
 .switch-btn:not(:nth-child(2)) {
-    opacity: 0; /* Side buttons hidden by default */
+    opacity: 0;
 }
 
 .switch-btn:nth-child(2) {
-    opacity: 1; /* Middle button always visible */
+    opacity: 1;
 }
 
 .button-group:hover .switch-btn {
-    opacity: 1; /* Show all buttons on hover */
+    opacity: 1;
 }
 
 .switch-btn:hover {
@@ -203,7 +203,7 @@ footer {
     color: #e0e0e0;
     text-align: center;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.3); /* Original background */
+    background: rgba(0, 0, 0, 0.3);
     width: 100%;
     box-sizing: border-box;
     font-weight: normal;
@@ -221,7 +221,7 @@ footer span {
 
 footer:hover {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.4); /* Original hover background */
+    background: rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 480px) {
@@ -257,6 +257,6 @@ footer:hover {
         font-size: 14px;
     }
     .links {
-        min-height: 320px; /* Mobile-friendly height */
+        min-height: 320px;
     }
 }
