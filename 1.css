@@ -90,6 +90,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 3px;
+    min-height: 400px;
 }
 
 .links .tg-link {
@@ -181,15 +182,15 @@ body {
 }
 
 .switch-btn:not(:nth-child(2)) {
-    opacity: 0; /* الأزرار الجانبية مخفية افتراضيًا */
+    opacity: 0; /* Side buttons hidden by default */
 }
 
 .switch-btn:nth-child(2) {
-    opacity: 1; /* الزر في المنتصف مرئي دائمًا */
+    opacity: 1; /* Middle button always visible */
 }
 
 .button-group:hover .switch-btn {
-    opacity: 1; /* تظهر جميع الأزرار عند الـ hover */
+    opacity: 1; /* Show all buttons on hover */
 }
 
 .switch-btn:hover {
@@ -202,14 +203,15 @@ footer {
     color: #e0e0e0;
     text-align: center;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1)
+    backdrop-filter: blur(10px);
     width: 100%;
     box-sizing: border-box;
     font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.8;
-    transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+    transition: opacity 0.4s ease-in-out, background 0.3s ease-in-out;
     margin-top: auto;
 }
 
@@ -220,7 +222,7 @@ footer span {
 
 footer:hover {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 480px) {
@@ -255,5 +257,7 @@ footer:hover {
         padding: 10px;
         font-size: 14px;
     }
+    .links {
+        min-height: 320px;
+    }
 }
-
