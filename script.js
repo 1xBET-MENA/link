@@ -45,54 +45,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     telegramBtn.addEventListener("click", () => {
         linksContainer.innerHTML = "";
+        const telegramHeader = document.createElement("p");
+        telegramHeader.textContent = "اختر دولتك لزيارة قنوات تلغرام الرسمية";
+        telegramHeader.className = "header";
+        linksContainer.appendChild(telegramHeader);
         telegramData.forEach(item => {
             const link = document.createElement("a");
             link.href = item.href;
             link.className = "tg-link";
             link.target = "_blank";
-            link.innerHTML = `<img src="${item.flag}" alt="Flag" loading="lazy">${item.text}`;
+            link.innerHTML = `<img src="${item.flag}" alt="${item.text} Flag" loading="lazy">${item.text}`;
             linksContainer.appendChild(link);
         });
         reorderButtons(telegramBtn);
         console.log("تم اختيار قنوات التلغرام");
     });
 
-emailBtn.addEventListener("click", () => {
-    linksContainer.innerHTML = "";
-    const emailHeader = document.createElement("p");
-    emailHeader.textContent = "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني";
-    emailHeader.className = "header";
-    linksContainer.appendChild(emailHeader);
-    emailData.forEach(item => {
-        const link = document.createElement("a");
-        link.href = item.href;
-        link.className = "email-link";
-        link.target = "_blank";
-        link.textContent = item.text;
-        linksContainer.appendChild(link);
+    emailBtn.addEventListener("click", () => {
+        linksContainer.innerHTML = "";
+        const emailHeader = document.createElement("p");
+        emailHeader.textContent = "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني";
+        emailHeader.className = "header";
+        linksContainer.appendChild(emailHeader);
+        emailData.forEach(item => {
+            const link = document.createElement("a");
+            link.href = item.href;
+            link.className = "email-link";
+            link.target = "_blank";
+            link.textContent = item.text;
+            linksContainer.appendChild(link);
+        });
+        reorderButtons(emailBtn);
+        console.log("تم اختيار الإيميلات");
     });
-    reorderButtons(emailBtn);
-    console.log("تم اختيار الإيميلات");
-});
 
-botBtn.addEventListener("click", () => {
-    linksContainer.innerHTML = "";
-    const botHeader = document.createElement("p");
-    botHeader.textContent = "اختر دولتك وراسلنا عبر بوتات تلغرام";
-    botHeader.className = "header";
-    linksContainer.appendChild(botHeader);
-    botData.forEach(item => {
-        const link = document.createElement("a");
-        link.href = item.href;
-        link.className = "tg-link";
-        link.target = "_blank";
-        link.innerHTML = `<img src="${item.flag}" alt="${item.text} Flag" loading="lazy">${item.text}`;
-        linksContainer.appendChild(link);
+    botBtn.addEventListener("click", () => {
+        linksContainer.innerHTML = "";
+        const botHeader = document.createElement("p");
+        botHeader.textContent = "اختر دولتك وراسلنا عبر بوتات تلغرام";
+        botHeader.className = "header";
+        linksContainer.appendChild(botHeader);
+        botData.forEach(item => {
+            const link = document.createElement("a");
+            link.href = item.href;
+            link.className = "tg-link";
+            link.target = "_blank";
+            link.innerHTML = `<img src="${item.flag}" alt="${item.text} Flag" loading="lazy">${item.text}`;
+            linksContainer.appendChild(link);
+        });
+        reorderButtons(botBtn);
+        console.log("تم اختيار البوتات");
     });
-    reorderButtons(botBtn);
-    console.log("تم اختيار البوتات");
-});
 
     reorderButtons(telegramBtn);
 });
-
