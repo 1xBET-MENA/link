@@ -320,12 +320,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
                 document.body.setAttribute("lang", lang);
 
-    document.querySelectorAll("[data-translate]").forEach(element => {
+document.querySelectorAll("[data-translate]").forEach(element => {
     const key = element.getAttribute("data-translate");
     if (key === "promocodeText") {
-        element.innerHTML = translations[lang][key];
+        element.innerHTML = translations[savedLang][key];
     } else {
-        element.textContent = translations[lang][key];
+        element.textContent = translations[savedLang][key];
     }
 });
 
@@ -343,14 +343,14 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.setAttribute("lang", savedLang);
         document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
         document.body.setAttribute("lang", savedLang);
-        document.querySelectorAll("[data-translate]").forEach(element => {
-            const key = element.getAttribute("data-translate");
-            if (key === "footer" || key === "promocodeText") {
-                element.innerHTML = translations[savedLang][key];
-            } else {
-                element.textContent = translations[savedLang][key];
-            }
-        });
+document.querySelectorAll("[data-translate]").forEach(element => {
+    const key = element.getAttribute("data-translate");
+    if (key === "promocodeText") {
+        element.innerHTML = translations[savedLang][key];
+    } else {
+        element.textContent = translations[savedLang][key];
+    }
+});
     }
 
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
@@ -360,7 +360,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateNews();
     setActiveLink(document.querySelector(".nav-link.active"));
 
-    // فحص الصور
     ["img/main.jpg", "img/logo.png", "img/game-bot.png"].forEach(url => {
         const img = new Image();
         img.src = url;
@@ -421,6 +420,7 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
 
