@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             emailHeader: "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني",
             botHeader: "اختر دولتك وراسلنا عبر بوتات تلغرام",
             gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
-            footer: "Powered by <span>1xBET بالعربي</span>",
+            footer: "Powered by <span dir=\"rtl\">1xBET بالعربي</span>",
             loading: "جاري التحميل...",
             promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
             newOffer: "عرض جديد!",
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             emailHeader: "Choose your country and contact us directly via Email",
             botHeader: "Choose your country and contact us via Telegram Bots",
             gameBotHeader: "Try the new Game Bot now!",
-            footer: "Powered by <span>1xBET Arabic</span>",
+            footer: "Powered by <span dir=\"rtl\">1xBET بالعربي</span>",
             loading: "Loading...",
             promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
             newOffer: "New Offer!",
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
             emailHeader: "Choisissez votre pays et contactez-nous directement par Email",
             botHeader: "Choisissez votre pays et contactez-nous via les Bots Télégramme",
             gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
-            footer: "Propulsé par <span>1xBET Arabe</span>",
+            footer: "Powered by <span dir=\"rtl\">1xBET بالعربي</span>",
             loading: "Chargement...",
             promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
             newOffer: "Nouvelle Offre !",
@@ -426,4 +426,5 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
