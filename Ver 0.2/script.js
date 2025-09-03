@@ -88,9 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
             footer: "Powered by <span>1xBET بالعربي</span>",
             loading: "جاري التحميل...",
-            promocodeText: "استخدم الكود <strong>1X3RBI</strong> للحصول على مكافآت حصرية!",
+            promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
             newOffer: "عرض جديد!",
-            promocodeOffer: "استخدم كود 1X3RBI للحصول على مكافأة 200% على إيداعك الأول!",
+            promocodeOffer: "استخدم كود 1XARABI للحصول على مكافأة 200% على إيداعك الأول!",
             matchToday: "مباراة اليوم",
             matchWeek: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!",
             newUpdate: "تحديث جديد",
@@ -129,9 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Try the new Game Bot now!",
             footer: "Powered by <span>1xBET Arabic</span>",
             loading: "Loading...",
-            promocodeText: "Use the code <strong>1X3RBI</strong> to get exclusive bonuses!",
+            promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
             newOffer: "New Offer!",
-            promocodeOffer: "Use code 1X3RBI to get a 200% bonus on your first deposit!",
+            promocodeOffer: "Use code 1XARABI to get a 200% bonus on your first deposit!",
             matchToday: "Today's Match",
             matchWeek: "Don't miss betting on the match of the week: Barcelona vs Real Madrid!",
             newUpdate: "New Update",
@@ -170,9 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
             footer: "Propulsé par <span>1xBET Arabe</span>",
             loading: "Chargement...",
-            promocodeText: "Utilisez le code <strong>1X3RBI</strong> pour obtenir des bonus exclusifs !",
+            promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
             newOffer: "Nouvelle Offre !",
-            promocodeOffer: "Utilisez le code 1X3RBI pour obtenir un bonus de 200% sur votre premier dépôt !",
+            promocodeOffer: "Utilisez le code 1XARABI pour obtenir un bonus de 200% sur votre premier dépôt !",
             matchToday: "Match du Jour",
             matchWeek: "Ne manquez pas de parier sur le match de la semaine : Barcelone contre Real Madrid !",
             newUpdate: "Nouvelle Mise à Jour",
@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function copyPromocode() {
-    const promocode = "1X3RBI";
+    const promocode = "1XARABI";
     const statusElement = document.getElementById("copy-status");
     const inputElement = document.querySelector(".promocode-input");
     const copyBtn = document.getElementById("copy-promocode-btn");
@@ -383,7 +383,7 @@ function copyPromocode() {
     if (!window.location.protocol.includes("https") && !window.location.hostname.includes("localhost")) {
         statusElement.textContent = translations[lang].copied;
         inputElement.style.display = "block";
-        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1X3RBI");
+        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1XARABI");
         return;
     }
     navigator.clipboard.writeText(promocode).then(() => {
@@ -397,7 +397,7 @@ function copyPromocode() {
     }).catch(() => {
         statusElement.textContent = translations[lang].copied ? "فشل النسخ، انسخ يدويًا:" : "Failed to copy, please copy manually: ";
         inputElement.style.display = "block";
-        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1X3RBI");
+        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1XARABI");
     });
 }
 
@@ -426,3 +426,4 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
