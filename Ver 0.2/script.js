@@ -312,46 +312,50 @@ document.addEventListener("DOMContentLoaded", () => {
         themeToggle.innerHTML = `<i class="fas fa-${savedTheme === "light" ? "moon" : "sun"}"></i>`;
     }
 
-    if (langDropdown) {
-        langOptions.forEach(option => {
-            option.addEventListener("click", () => {
-                const lang = option.getAttribute("data-lang");
-                document.documentElement.setAttribute("lang", lang);
-                document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-                document.body.setAttribute("lang", lang);
+if (langDropdown) {
+    langOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            const lang = option.getAttribute("data-lang");
+            document.documentElement.setAttribute("lang", lang);
+            document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+            document.body.setAttribute("lang", lang);
 
-document.querySelectorAll("[data-translate]").forEach(element => {
-    const key = element.getAttribute("data-translate");
-    if (key === "promocodeText") {
-        element.innerHTML = translations[savedLang][key];
-    } else {
-        element.textContent = translations[savedLang][key];
-    }
-});
-
-                updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
-                updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
-                updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-                updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
-                updateNews();
-
-                localStorage.setItem("lang", lang);
+            document.querySelectorAll("[data-translate]").forEach(element => {
+                const key = element.getAttribute("data-translate");
+                if (translations[lang][key]) { // تحقق إذا الكي موجود
+                    if (key === "promocodeText") {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
             });
-        });
 
-        const savedLang = localStorage.getItem("lang") || "ar";
-        document.documentElement.setAttribute("lang", savedLang);
-        document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
-        document.body.setAttribute("lang", savedLang);
-document.querySelectorAll("[data-translate]").forEach(element => {
-    const key = element.getAttribute("data-translate");
-    if (key === "promocodeText") {
-        element.innerHTML = translations[savedLang][key];
-    } else {
-        element.textContent = translations[savedLang][key];
-    }
-});
-    }
+            updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
+            updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
+            updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
+            updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+            updateNews();
+
+            localStorage.setItem("lang", lang);
+        });
+    });
+
+    const savedLang = localStorage.getItem("lang") || "ar";
+    document.documentElement.setAttribute("lang", savedLang);
+    document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
+    document.body.setAttribute("lang", savedLang);
+    document.querySelectorAll("[data-translate]").forEach(element => {
+        const key = element.getAttribute("data-translate");
+        if (translations[savedLang][key]) { // تحقق إذا الكي موجود
+            if (key === "promocodeText") {
+                element.innerHTML = translations[savedLang][key];
+            } else {
+                element.textContent = translations[savedLang][key];
+            }
+        }
+    });
+}
 
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
@@ -420,6 +424,7 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
 
