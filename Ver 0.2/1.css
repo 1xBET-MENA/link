@@ -655,11 +655,14 @@ footer {
     width: 100%;
     box-sizing: border-box;
     margin-top: auto;
+    direction: ltr;
 }
 
 footer span {
     font-weight: bold;
     color: var(--primary-color);
+    direction: rtl;
+    display: inline-block;
 }
 
 @keyframes fadeInUp {
@@ -777,3 +780,4 @@ footer span {
         margin-left: 10px;
     }
 }
+
