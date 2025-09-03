@@ -658,11 +658,14 @@ footer {
     direction: ltr;
 }
 
-footer span {
+footer .brand-name {
+    font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif; /* خط موحد */
     font-weight: bold;
     color: var(--primary-color);
     direction: rtl;
     display: inline-block;
+    unicode-bidi: isolate;
+    white-space: nowrap;
 }
 
 @keyframes fadeInUp {
@@ -780,4 +783,5 @@ footer span {
         margin-left: 10px;
     }
 }
+
 
