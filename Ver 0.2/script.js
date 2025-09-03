@@ -86,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
             emailHeader: "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني",
             botHeader: "اختر دولتك وراسلنا عبر بوتات تلغرام",
             gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
-            footer: "Powered by <span dir=\"rtl\">1xBET بالعربي</span>",
             loading: "جاري التحميل...",
             promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
             newOffer: "عرض جديد!",
@@ -127,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
             emailHeader: "Choose your country and contact us directly via Email",
             botHeader: "Choose your country and contact us via Telegram Bots",
             gameBotHeader: "Try the new Game Bot now!",
-            footer: "Powered by <span dir=\"rtl\">1xBET بالعربي</span>",
             loading: "Loading...",
             promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
             newOffer: "New Offer!",
@@ -168,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
             emailHeader: "Choisissez votre pays et contactez-nous directement par Email",
             botHeader: "Choisissez votre pays et contactez-nous via les Bots Télégramme",
             gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
-            footer: "Powered by <span dir=\"rtl\">1xBET بالعربي</span>",
             loading: "Chargement...",
             promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
             newOffer: "Nouvelle Offre !",
@@ -323,17 +320,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
                 document.body.setAttribute("lang", lang);
 
-                // تحديث النصوص
-                document.querySelectorAll("[data-translate]").forEach(element => {
-                    const key = element.getAttribute("data-translate");
-                    if (key === "footer" || key === "promocodeText") {
-                        element.innerHTML = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                });
+    document.querySelectorAll("[data-translate]").forEach(element => {
+    const key = element.getAttribute("data-translate");
+    if (key === "promocodeText") {
+        element.innerHTML = translations[lang][key];
+    } else {
+        element.textContent = translations[lang][key];
+    }
+});
 
-                // تحديث الروابط والأخبار
                 updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
                 updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
                 updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
@@ -426,5 +421,6 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
