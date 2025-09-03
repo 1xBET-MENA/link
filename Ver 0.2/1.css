@@ -655,17 +655,20 @@ footer {
     width: 100%;
     box-sizing: border-box;
     margin-top: auto;
+    font-family: 'Noto Sans Arabic', sans-serif; /* خط موحد بدون احتياطي */
     direction: ltr;
+    line-height: 1.5; /* لتحسين العرض */
 }
 
 footer .brand-name {
-    font-family: 'Noto Sans Arabic', 'Tajawal', sans-serif; /* خط موحد */
+    font-family: 'Noto Sans Arabic', sans-serif; /* خط موحد */
     font-weight: bold;
     color: var(--primary-color);
     direction: rtl;
     display: inline-block;
     unicode-bidi: isolate;
     white-space: nowrap;
+    padding: 0 4px; /* تباعد إضافي */
 }
 
 @keyframes fadeInUp {
@@ -783,5 +786,6 @@ footer .brand-name {
         margin-left: 10px;
     }
 }
+
 
 
