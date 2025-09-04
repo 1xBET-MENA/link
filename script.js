@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "تحديث جديد",
             telegramUpdate: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين.",
             gameBotNews: "إطلاق بوت الألعاب!",
-            gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريبًا!",
+            gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريباً!",
             supportTeamEgypt: "فريق الدعم - مصر",
             supportTeamMorocco: "فريق الدعم - المغرب",
             supportTeamMauritania: "فريق الدعم - موريتانيا",
