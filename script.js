@@ -56,24 +56,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const botData = [
         { href: "https://t.me/iraqpaymentssupport_bot", text: "financialSupportBotIraq", icon: "img/irq.png" },
         { href: "https://t.me/jordanpaymentssupport_bot", text: "financialSupportBotJordan", icon: "img/jor.png" },
-        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" }
+        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" },
+        { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" }
     ];
 
-    const gameBotData = [
-        //{ href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }//
-            { text: "gameBotUnderDevelopment" }
-    ];
+    //const gameBotData = [
+        //{ href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
+    //];
 
     const newsData = [
         { title: "newPromo", content: "promocodeOffer" },
-        //{ title: "matchToday", content: "matchWeek" },//
+        //{ title: "matchToday", content: "matchWeek" },
         { title: "newUpdate", content: "telegramUpdate" },
         { title: "gameBotNews", content: "gameBotNewsContent" }
     ];
 
     const translations = {
         ar: {
-            gameBotUnderDevelopment: "بوت الألعاب قيد التطوير",
             home: "الرئيسية",
             telegram: "تلغرام",
             email: "البريد الإلكتروني",
@@ -114,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBot: "بوت الألعاب"
         },
         en: {
-            gameBotUnderDevelopment: "Game Bot Under Development",
             home: "Home",
             telegram: "Telegram",
             email: "Email",
@@ -155,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBot: "Game Bot"
         },
         fr: {
-            gameBotUnderDevelopment: "Bot de Jeu en Cours de Développement",
             home: "Accueil",
             telegram: "Télégramme",
             email: "Email",
@@ -428,3 +425,4 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
