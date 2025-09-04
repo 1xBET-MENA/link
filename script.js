@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "بوت الدعم المالي - العراق",
             financialSupportBotJordan: "بوت الدعم المالي - الأردن",
             financialSupportBotAlgeria: "بوت الدعم المالي - الجزائر",
+            financialSupportBotMorocco: "بوت الدعم المالي - المغرب",
             gameBot: "بوت الألعاب"
         },
         en: {
@@ -150,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "Financial Support Bot - Iraq",
             financialSupportBotJordan: "Financial Support Bot - Jordan",
             financialSupportBotAlgeria: "Financial Support Bot - Algeria",
+            financialSupportBotMorocco: "Financial Support Bot - Morocco",
             gameBot: "Game Bot"
         },
         fr: {
@@ -190,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "Bot de Support Financier - Irak",
             financialSupportBotJordan: "Bot de Support Financier - Jordanie",
             financialSupportBotAlgeria: "Bot de Support Financier - Algérie",
+            financialSupportBotAlgeria: "Bot de Support Financier - Maroc",
             gameBot: "Bot de Jeu"
         }
     };
@@ -425,4 +428,5 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
