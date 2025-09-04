@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "تحديث جديد",
             telegramUpdate: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين.",
             gameBotNews: "إطلاق بوت الألعاب!",
-            gameBotNewsContent: "جرب بوت الألعاب الجديد @xBETxoBOT لتجربة ترفيهية مميزة!",
+            gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريبًا!",
             supportTeamEgypt: "فريق الدعم - مصر",
             supportTeamMorocco: "فريق الدعم - المغرب",
             supportTeamMauritania: "فريق الدعم - موريتانيا",
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "New Update",
             telegramUpdate: "Telegram channels updated to provide better user support.",
             gameBotNews: "Game Bot Launch!",
-            gameBotNewsContent: "Try the new Game Bot @xBETxoBOT for a unique entertainment experience!",
+            gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!!",
             supportTeamEgypt: "Support Team - Egypt",
             supportTeamMorocco: "Support Team - Morocco",
             supportTeamMauritania: "Support Team - Mauritania",
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "Nouvelle Mise à Jour",
             telegramUpdate: "Les chaînes Télégramme ont été mises à jour pour offrir un meilleur support aux utilisateurs.",
             gameBotNews: "Lancement du Bot de Jeu !",
-            gameBotNewsContent: "Essayez le nouveau Bot de Jeu @xBETxoBOT pour une expérience de divertissement unique !",
+            gameBotNewsContent: "Le Bot de Jeu est en cours de développement... Restez à l'écoute pour une expérience de divertissement incroyable !",
             supportTeamEgypt: "Équipe de Support - Égypte",
             supportTeamMorocco: "Équipe de Support - Maroc",
             supportTeamMauritania: "Équipe de Support - Mauritanie",
@@ -351,7 +351,7 @@ if (langDropdown) {
     document.body.setAttribute("lang", savedLang);
     document.querySelectorAll("[data-translate]").forEach(element => {
         const key = element.getAttribute("data-translate");
-        if (translations[savedLang][key]) { // تحقق إذا الكي موجود
+        if (translations[savedLang][key]) {
             if (key === "promocodeText") {
                 element.innerHTML = translations[savedLang][key];
             } else {
@@ -364,7 +364,7 @@ if (langDropdown) {
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
     updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-    updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+    //updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
     updateNews();
     setActiveLink(document.querySelector(".nav-link.active"));
 
@@ -428,9 +428,3 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
-
-
-
-
-
-
