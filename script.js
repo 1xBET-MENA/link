@@ -56,16 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const botData = [
         { href: "https://t.me/iraqpaymentssupport_bot", text: "financialSupportBotIraq", icon: "img/irq.png" },
         { href: "https://t.me/jordanpaymentssupport_bot", text: "financialSupportBotJordan", icon: "img/jor.png" },
-        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" }
+        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" },
+        { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" }
     ];
 
-    const gameBotData = [
-        { href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
-    ];
+   // const gameBotData = [
+        //{ href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
+    //];
 
     const newsData = [
-        { title: "newOffer", content: "promocodeOffer" },
-        { title: "matchToday", content: "matchWeek" },
+        { title: "newPromo", content: "promocodeOffer" },
+        //{ title: "matchToday", content: "matchWeek" },
         { title: "newUpdate", content: "telegramUpdate" },
         { title: "gameBotNews", content: "gameBotNewsContent" }
     ];
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
             loading: "جاري التحميل...",
             promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
-            newOffer: "عرض جديد!",
+            newPromo: "عرض جديد!",
             promocodeOffer: "استخدم كود 1XARABI للحصول على مكافأة 200% على إيداعك الأول!",
             matchToday: "مباراة اليوم",
             matchWeek: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!",
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Try the new Game Bot now!",
             loading: "Loading...",
             promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
-            newOffer: "New Offer!",
+            newPromo: "New Offer!",
             promocodeOffer: "Use code 1XARABI to get a 200% bonus on your first deposit!",
             matchToday: "Today's Match",
             matchWeek: "Don't miss betting on the match of the week: Barcelona vs Real Madrid!",
@@ -168,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
             loading: "Chargement...",
             promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
-            newOffer: "Nouvelle Offre !",
+            newPromo: "Nouvelle Offre !",
             promocodeOffer: "Utilisez le code 1XARABI pour obtenir un bonus de 200% sur votre premier dépôt !",
             matchToday: "Match du Jour",
             matchWeek: "Ne manquez pas de parier sur le match de la semaine : Barcelone contre Real Madrid !",
@@ -332,7 +333,7 @@ document.querySelectorAll("[data-translate]").forEach(element => {
                 updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
                 updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
                 updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-                updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+                //updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
                 updateNews();
 
                 localStorage.setItem("lang", lang);
@@ -356,7 +357,7 @@ document.querySelectorAll("[data-translate]").forEach(element => {
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
     updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-    updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+    //updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
     updateNews();
     setActiveLink(document.querySelector(".nav-link.active"));
 
@@ -420,3 +421,4 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
