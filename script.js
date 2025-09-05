@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const newsData = [
         { title: "newOffer", content: "promocodeOffer" },
-        { title: "matchToday", content: "matchWeek" },
         { title: "newUpdate", content: "telegramUpdate" },
         { title: "gameBotNews", content: "gameBotNewsContent" }
     ];
@@ -87,8 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
             promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
             newOffer: "برومو جديد!",
             promocodeOffer: "استخدم كود 1XARABI للحصول على مكافأة 200% على إيداعك الأول!",
-            matchToday: "مباراة اليوم",
-            matchWeek: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!",
             newUpdate: "تحديث جديد",
             telegramUpdate: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين.",
             gameBotNews: "إطلاق بوت الألعاب!",
@@ -128,8 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
             promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
             newOffer: "New Promo!",
             promocodeOffer: "Use code 1XARABI to get a 200% bonus on your first deposit!",
-            matchToday: "Today's Match",
-            matchWeek: "Don't miss betting on the match of the week: Barcelona vs Real Madrid!",
             newUpdate: "New Update",
             telegramUpdate: "Telegram channels updated to provide better user support.",
             gameBotNews: "Game Bot Launch!",
@@ -169,8 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
             promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
             newOffer: "Nouveau Promo !",
             promocodeOffer: "Utilisez le code 1XARABI pour obtenir un bonus de 200% sur votre premier dépôt !",
-            matchToday: "Match du Jour",
-            matchWeek: "Ne manquez pas de parier sur le match de la semaine : Barcelone contre Real Madrid !",
             newUpdate: "Nouvelle Mise à Jour",
             telegramUpdate: "Les chaînes Télégramme ont été mises à jour pour offrir un meilleur support aux utilisateurs.",
             gameBotNews: "Lancement du Bot de Jeu !",
@@ -346,7 +339,7 @@ if (langDropdown) {
     document.body.setAttribute("lang", savedLang);
     document.querySelectorAll("[data-translate]").forEach(element => {
         const key = element.getAttribute("data-translate");
-        if (translations[savedLang][key]) { // تحقق إذا الكي موجود
+        if (translations[savedLang][key]) {
             if (key === "promocodeText") {
                 element.innerHTML = translations[savedLang][key];
             } else {
@@ -422,3 +415,4 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
