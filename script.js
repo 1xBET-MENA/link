@@ -56,17 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const botData = [
         { href: "https://t.me/iraqpaymentssupport_bot", text: "financialSupportBotIraq", icon: "img/irq.png" },
         { href: "https://t.me/jordanpaymentssupport_bot", text: "financialSupportBotJordan", icon: "img/jor.png" },
-        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" },
-        { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" }
+        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" }
     ];
 
-    //const gameBotData = [
-        //{ href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
-    //];
+    const gameBotData = [
+        { href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
+    ];
 
     const newsData = [
-        { title: "newPromo", content: "promocodeOffer" },
-        //{ title: "matchToday", content: "matchWeek" },
+        { title: "newOffer", content: "promocodeOffer" },
+        { title: "matchToday", content: "matchWeek" },
         { title: "newUpdate", content: "telegramUpdate" },
         { title: "gameBotNews", content: "gameBotNewsContent" }
     ];
@@ -89,14 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
             loading: "جاري التحميل...",
             promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
-            newPromo: "برومو جديد!",
+            newOffer: "عرض جديد!",
             promocodeOffer: "استخدم كود 1XARABI للحصول على مكافأة 200% على إيداعك الأول!",
             matchToday: "مباراة اليوم",
             matchWeek: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!",
             newUpdate: "تحديث جديد",
             telegramUpdate: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين.",
             gameBotNews: "إطلاق بوت الألعاب!",
-            gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريباً!",
+            gameBotNewsContent: "جرب بوت الألعاب الجديد @xBETxoBOT لتجربة ترفيهية مميزة!",
             supportTeamEgypt: "فريق الدعم - مصر",
             supportTeamMorocco: "فريق الدعم - المغرب",
             supportTeamMauritania: "فريق الدعم - موريتانيا",
@@ -110,7 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "بوت الدعم المالي - العراق",
             financialSupportBotJordan: "بوت الدعم المالي - الأردن",
             financialSupportBotAlgeria: "بوت الدعم المالي - الجزائر",
-            financialSupportBotMorocco: "بوت الدعم المالي - المغرب",
             gameBot: "بوت الألعاب"
         },
         en: {
@@ -130,14 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Try the new Game Bot now!",
             loading: "Loading...",
             promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
-            newPromo: "New Promo!",
+            newOffer: "New Offer!",
             promocodeOffer: "Use code 1XARABI to get a 200% bonus on your first deposit!",
             matchToday: "Today's Match",
             matchWeek: "Don't miss betting on the match of the week: Barcelona vs Real Madrid!",
             newUpdate: "New Update",
             telegramUpdate: "Telegram channels updated to provide better user support.",
             gameBotNews: "Game Bot Launch!",
-            gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!!",
+            gameBotNewsContent: "Try the new Game Bot @xBETxoBOT for a unique entertainment experience!",
             supportTeamEgypt: "Support Team - Egypt",
             supportTeamMorocco: "Support Team - Morocco",
             supportTeamMauritania: "Support Team - Mauritania",
@@ -151,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "Financial Support Bot - Iraq",
             financialSupportBotJordan: "Financial Support Bot - Jordan",
             financialSupportBotAlgeria: "Financial Support Bot - Algeria",
-            financialSupportBotMorocco: "Financial Support Bot - Morocco",
             gameBot: "Game Bot"
         },
         fr: {
@@ -171,14 +168,14 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
             loading: "Chargement...",
             promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
-            newPromo: "Nouveau Promo !",
+            newOffer: "Nouvelle Offre !",
             promocodeOffer: "Utilisez le code 1XARABI pour obtenir un bonus de 200% sur votre premier dépôt !",
             matchToday: "Match du Jour",
             matchWeek: "Ne manquez pas de parier sur le match de la semaine : Barcelone contre Real Madrid !",
             newUpdate: "Nouvelle Mise à Jour",
             telegramUpdate: "Les chaînes Télégramme ont été mises à jour pour offrir un meilleur support aux utilisateurs.",
             gameBotNews: "Lancement du Bot de Jeu !",
-            gameBotNewsContent: "Le Bot de Jeu est en cours de développement... Restez à l'écoute pour une expérience de divertissement incroyable !",
+            gameBotNewsContent: "Essayez le nouveau Bot de Jeu @xBETxoBOT pour une expérience de divertissement unique !",
             supportTeamEgypt: "Équipe de Support - Égypte",
             supportTeamMorocco: "Équipe de Support - Maroc",
             supportTeamMauritania: "Équipe de Support - Mauritanie",
@@ -192,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "Bot de Support Financier - Irak",
             financialSupportBotJordan: "Bot de Support Financier - Jordanie",
             financialSupportBotAlgeria: "Bot de Support Financier - Algérie",
-            financialSupportBotAlgeria: "Bot de Support Financier - Maroc",
             gameBot: "Bot de Jeu"
         }
     };
@@ -316,55 +312,51 @@ document.addEventListener("DOMContentLoaded", () => {
         themeToggle.innerHTML = `<i class="fas fa-${savedTheme === "light" ? "moon" : "sun"}"></i>`;
     }
 
-if (langDropdown) {
-    langOptions.forEach(option => {
-        option.addEventListener("click", () => {
-            const lang = option.getAttribute("data-lang");
-            document.documentElement.setAttribute("lang", lang);
-            document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-            document.body.setAttribute("lang", lang);
+    if (langDropdown) {
+        langOptions.forEach(option => {
+            option.addEventListener("click", () => {
+                const lang = option.getAttribute("data-lang");
+                document.documentElement.setAttribute("lang", lang);
+                document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+                document.body.setAttribute("lang", lang);
 
-            document.querySelectorAll("[data-translate]").forEach(element => {
-                const key = element.getAttribute("data-translate");
-                if (translations[lang][key]) { // تحقق إذا الكي موجود
-                    if (key === "promocodeText") {
-                        element.innerHTML = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
+document.querySelectorAll("[data-translate]").forEach(element => {
+    const key = element.getAttribute("data-translate");
+    if (key === "promocodeText") {
+        element.innerHTML = translations[savedLang][key];
+    } else {
+        element.textContent = translations[savedLang][key];
+    }
+});
+
+                updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
+                updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
+                updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
+                updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+                updateNews();
+
+                localStorage.setItem("lang", lang);
             });
-
-            updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
-            updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
-            updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-            updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
-            updateNews();
-
-            localStorage.setItem("lang", lang);
         });
-    });
 
-    const savedLang = localStorage.getItem("lang") || "ar";
-    document.documentElement.setAttribute("lang", savedLang);
-    document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
-    document.body.setAttribute("lang", savedLang);
-    document.querySelectorAll("[data-translate]").forEach(element => {
-        const key = element.getAttribute("data-translate");
-        if (translations[savedLang][key]) {
-            if (key === "promocodeText") {
-                element.innerHTML = translations[savedLang][key];
-            } else {
-                element.textContent = translations[savedLang][key];
-            }
-        }
-    });
-}
+        const savedLang = localStorage.getItem("lang") || "ar";
+        document.documentElement.setAttribute("lang", savedLang);
+        document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
+        document.body.setAttribute("lang", savedLang);
+document.querySelectorAll("[data-translate]").forEach(element => {
+    const key = element.getAttribute("data-translate");
+    if (key === "promocodeText") {
+        element.innerHTML = translations[savedLang][key];
+    } else {
+        element.textContent = translations[savedLang][key];
+    }
+});
+    }
 
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
     updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-    //updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+    updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
     updateNews();
     setActiveLink(document.querySelector(".nav-link.active"));
 
@@ -428,5 +420,3 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
-
-
