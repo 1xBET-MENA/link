@@ -60,13 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" }
     ];
 
-   // const gameBotData = [
-        //{ href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
-    //];
+    const gameBotData = [
+        { href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
+    ];
 
     const newsData = [
         { title: "newPromo", content: "promocodeOffer" },
-        //{ title: "matchToday", content: "matchWeek" },
+        { title: "matchToday", content: "matchWeek" },
         { title: "newUpdate", content: "telegramUpdate" },
         { title: "gameBotNews", content: "gameBotNewsContent" }
     ];
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "تحديث جديد",
             telegramUpdate: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين.",
             gameBotNews: "إطلاق بوت الألعاب!",
-            gameBotNewsContent: "جرب بوت الألعاب الجديد @xBETxoBOT لتجربة ترفيهية مميزة!",
+            gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريباً!",
             supportTeamEgypt: "فريق الدعم - مصر",
             supportTeamMorocco: "فريق الدعم - المغرب",
             supportTeamMauritania: "فريق الدعم - موريتانيا",
@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "بوت الدعم المالي - العراق",
             financialSupportBotJordan: "بوت الدعم المالي - الأردن",
             financialSupportBotAlgeria: "بوت الدعم المالي - الجزائر",
+            financialSupportBotMorocco: "بوت الدعم المالي - المغرب",
             gameBot: "بوت الألعاب"
         },
         en: {
@@ -136,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "New Update",
             telegramUpdate: "Telegram channels updated to provide better user support.",
             gameBotNews: "Game Bot Launch!",
-            gameBotNewsContent: "Try the new Game Bot @xBETxoBOT for a unique entertainment experience!",
+            gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!!",
             supportTeamEgypt: "Support Team - Egypt",
             supportTeamMorocco: "Support Team - Morocco",
             supportTeamMauritania: "Support Team - Mauritania",
@@ -150,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "Financial Support Bot - Iraq",
             financialSupportBotJordan: "Financial Support Bot - Jordan",
             financialSupportBotAlgeria: "Financial Support Bot - Algeria",
+            financialSupportBotMorocco: "Financial Support Bot - Morocco",
             gameBot: "Game Bot"
         },
         fr: {
@@ -176,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "Nouvelle Mise à Jour",
             telegramUpdate: "Les chaînes Télégramme ont été mises à jour pour offrir un meilleur support aux utilisateurs.",
             gameBotNews: "Lancement du Bot de Jeu !",
-            gameBotNewsContent: "Essayez le nouveau Bot de Jeu @xBETxoBOT pour une expérience de divertissement unique !",
+            gameBotNewsContent: "Le Bot de Jeu est en cours de développement... Restez à l'écoute pour une expérience de divertissement incroyable !",
             supportTeamEgypt: "Équipe de Support - Égypte",
             supportTeamMorocco: "Équipe de Support - Maroc",
             supportTeamMauritania: "Équipe de Support - Mauritanie",
@@ -190,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotIraq: "Bot de Support Financier - Irak",
             financialSupportBotJordan: "Bot de Support Financier - Jordanie",
             financialSupportBotAlgeria: "Bot de Support Financier - Algérie",
+            financialSupportBotAlgeria: "Bot de Support Financier - Maroc",
             gameBot: "Bot de Jeu"
         }
     };
@@ -333,7 +336,7 @@ document.querySelectorAll("[data-translate]").forEach(element => {
                 updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
                 updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
                 updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-                //updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+                updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
                 updateNews();
 
                 localStorage.setItem("lang", lang);
@@ -357,7 +360,7 @@ document.querySelectorAll("[data-translate]").forEach(element => {
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
     updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-    //updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
+    updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
     updateNews();
     setActiveLink(document.querySelector(".nav-link.active"));
 
@@ -421,5 +424,6 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
