@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
             loading: "جاري التحميل...",
             promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
-            newPromo: "عرض جديد!",
+            newPromo: "برومو جديد!",
             promocodeOffer: "استخدم كود 1XARABI للحصول على مكافأة 200% على إيداعك الأول!",
             matchToday: "مباراة اليوم",
             matchWeek: "لا تفوت المراهنة على مباراة الأسبوع: برشلونة ضد ريال مدريد!",
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Try the new Game Bot now!",
             loading: "Loading...",
             promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
-            newPromo: "New Offer!",
+            newPromo: "New Promo!",
             promocodeOffer: "Use code 1XARABI to get a 200% bonus on your first deposit!",
             matchToday: "Today's Match",
             matchWeek: "Don't miss betting on the match of the week: Barcelona vs Real Madrid!",
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
             loading: "Chargement...",
             promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
-            newPromo: "Nouvelle Offre !",
+            newPromo: "Nouveau Promo !",
             promocodeOffer: "Utilisez le code 1XARABI pour obtenir un bonus de 200% sur votre premier dépôt !",
             matchToday: "Match du Jour",
             matchWeek: "Ne manquez pas de parier sur le match de la semaine : Barcelone contre Real Madrid !",
@@ -421,4 +421,5 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
