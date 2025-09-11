@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             connectTitle: "اشترك في رحلتنا! تابع صفحاتنا وحمل التطبيق الآن!",
             socialMedia: "تابعنا",
             downloadApp: "حمّل التطبيق",
+	    registerBtn: "تسجيل الآن",
             gameBot: "بوت الألعاب"
         },
         en: {
@@ -149,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
             connectTitle: "Join our journey! Follow our pages and download the app now!",
             socialMedia: "Follow Us",
             downloadApp: "Download the App",
+	    registerBtn: "Register Now",
             gameBot: "Game Bot"
         },
         fr: {
@@ -191,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
             connectTitle: "Rejoignez notre aventure ! Suivez nos pages et téléchargez l'application maintenant !",
             socialMedia: "Suivez-nous",
             downloadApp: "Téléchargez l'application",
+	    registerBtn: "S'inscrire Maintenant",
             gameBot: "Bot de Jeu"
         }
     };
@@ -373,28 +376,14 @@ if (langDropdown) {
 
 function copyPromocode() {
     const promocode = "1XARABI";
-    const statusElement = document.getElementById("copy-status");
-    const inputElement = document.querySelector(".promocode-input");
-    const copyBtn = document.getElementById("copy-promocode-btn");
     const lang = document.documentElement.getAttribute("lang") || "ar";
-    statusElement.textContent = "";
     if (!window.location.protocol.includes("https") && !window.location.hostname.includes("localhost")) {
-        statusElement.textContent = translations[lang].copied;
-        inputElement.style.display = "block";
         showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1XARABI");
         return;
     }
     navigator.clipboard.writeText(promocode).then(() => {
-        statusElement.textContent = translations[lang].copied;
-        copyBtn.textContent = translations[lang].copied;
         showToast(translations[lang].copied);
-        setTimeout(() => {
-            copyBtn.textContent = translations[lang].copyBtn;
-            statusElement.textContent = "";
-        }, 2000);
     }).catch(() => {
-        statusElement.textContent = translations[lang].copied ? "فشل النسخ، انسخ يدويًا:" : "Failed to copy, please copy manually: ";
-        inputElement.style.display = "block";
         showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1XARABI");
     });
 }
@@ -419,10 +408,8 @@ function fallbackCopy(text) {
         const successful = document.execCommand("copy");
         statusElement.textContent = successful ? translations[document.documentElement.getAttribute("lang") || "ar"].copied : "فشل النسخ، يرجى نسخه يدويًا: " + text;
     } catch (err) {
-        statusElement.textContent = "فشل النسخ: " + err.message + "، يرجى نسخه يدويًا: " + text;
+        statusElement.textContent = "فشل النسخ: " + err.message + "، يرجى نسخه يدويا: " + text;
     } finally {
         document.body.removeChild(tempInput);
     }
 }
-
-
