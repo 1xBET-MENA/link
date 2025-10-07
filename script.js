@@ -56,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/iraqpaymentssupport_bot", text: "financialSupportBotIraq", icon: "img/irq.png" },
         { href: "https://t.me/jordanpaymentssupport_bot", text: "financialSupportBotJordan", icon: "img/jor.png" },
         { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" },
-        { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" }
+        { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" },
+        { href: "https://t.me/egyptpaymentssupport_bot", text: "financialSupportBotEgypt", icon: "img/egy.png" }
     ];
 
 
@@ -143,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotJordan: "Financial Support Bot - Jordan",
             financialSupportBotAlgeria: "Financial Support Bot - Algeria",
             financialSupportBotMorocco: "Financial Support Bot - Morocco",
+            financialSupportBotEgypt: "Financial Support Bot - Egypt",
             gameBot: "Game Bot"
         },
         fr: {
@@ -182,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotJordan: "Bot de Support Financier - Jordanie",
             financialSupportBotAlgeria: "Bot de Support Financier - Algérie",
             financialSupportBotMorocco: "Bot de Support Financier - Maroc",
+            financialSupportBotEgypt: "Bot de Support Financier - Égypte",
             gameBot: "Bot de Jeu"
         }
     };
@@ -415,5 +418,6 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
