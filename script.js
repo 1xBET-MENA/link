@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newOffer: "برومو جديد!",
             promocodeOffer: "استخدم كود 1XARABI للحصول على مكافأة 200% على إيداعك الأول!",
             newUpdate: "تحديث جديد",
-            telegramUpdate: "تم تحديث قنوات تلغرام لتقديم دعم أفضل للمستخدمين.",
+            telegramUpdate: "تم اطلاق بوت تلغرام لحل المشاكل المالية في دولة مصر!",
             gameBotNews: "إطلاق بوت الألعاب!",
             gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريباً!",
             supportTeamEgypt: "فريق الدعم - مصر",
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newOffer: "New Promo!",
             promocodeOffer: "Use code 1XARABI to get a 200% bonus on your first deposit!",
             newUpdate: "New Update",
-            telegramUpdate: "Telegram channels updated to provide better user support.",
+            telegramUpdate: "A Telegram bot has been launched to solve financial issues in Egypt!",
             gameBotNews: "Game Bot Launch!",
             gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!!",
             supportTeamEgypt: "Support Team - Egypt",
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newOffer: "Nouveau Promo !",
             promocodeOffer: "Utilisez le code 1XARABI pour obtenir un bonus de 200% sur votre premier dépôt !",
             newUpdate: "Nouvelle Mise à Jour",
-            telegramUpdate: "Les chaînes Télégramme ont été mises à jour pour offrir un meilleur support aux utilisateurs.",
+            telegramUpdate: "Un bot Telegram a été lancé pour résoudre les problèmes financiers en Égypte !",
             gameBotNews: "Lancement du Bot de Jeu !",
             gameBotNewsContent: "Le Bot de Jeu est en cours de développement... Restez à l'écoute pour une expérience de divertissement incroyable !",
             supportTeamEgypt: "Équipe de Support - Égypte",
@@ -419,6 +419,7 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
 
