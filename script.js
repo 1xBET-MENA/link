@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             financialSupportBotJordan: "بوت الدعم المالي - الأردن",
             financialSupportBotAlgeria: "بوت الدعم المالي - الجزائر",
             financialSupportBotMorocco: "بوت الدعم المالي - المغرب",
+            financialSupportBotEgypt: "بوت الدعم المالي - مصر",
             gameBot: "بوت الألعاب"
         },
         en: {
@@ -418,6 +419,7 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
 
