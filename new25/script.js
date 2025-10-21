@@ -1,239 +1,51 @@
-const loadingTexts = {
-    ar: ["جاري التحميل...", "لحظات فقط...", "يتم الآن التحميل..."],
-    en: ["Loading...", "Just a moment...", "Fetching now..."],
-    fr: ["Chargement...", "Un instant...", "Récupération en cours..."]
-};
-
-function updateLoadingText() {
-    const lang = document.documentElement.getAttribute("lang") || "ar";
-    const loadingTextElement = document.querySelector(".loading-text");
-    if (loadingTextElement) {
-        let index = 0;
-        const updateText = () => {
-            loadingTextElement.textContent = loadingTexts[lang][index];
-            index = (index + 1) % loadingTexts[lang].length;
-        };
-        updateText();
-        return setInterval(updateText, 2000);
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    const navLinks = document.querySelectorAll(".nav-link");
-    const telegramLinks = document.getElementById("telegram-links");
-    const emailLinks = document.getElementById("email-links");
-    const botLinks = document.getElementById("bot-links");
-    const newsContent = document.getElementById("news-content");
-    const copyBtn = document.getElementById("copy-promocode-btn");
-    const scrollTopBtn = document.querySelector(".scroll-top-btn");
-    const themeToggle = document.querySelector(".theme-toggle");
-    const langDropdown = document.querySelector(".lang-dropdown");
-    const langOptions = document.querySelectorAll(".lang-option");
-
-    // بيانات الروابط
     const telegramData = [
-        { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
-        { href: "https://t.me/xBET_MENA_MAR", text: "1xBET Morocco - بالعربي", flag: "img/mar.png" },
-        { href: "https://t.me/xBET_MENA_MRT", text: "1xBET Mauritania - بالعربي", flag: "img/mrt.png" },
-        { href: "https://t.me/xBET_MENA_IRQ", text: "1xBET Iraq - بالعربي", flag: "img/irq.png" },
-        { href: "https://t.me/xBET_MENA_JOR", text: "1xBET Jordan - بالعربي", flag: "img/jor.png" },
-        { href: "https://t.me/xBET_MENA_DZA", text: "1xBET Algeria - بالعربي", flag: "img/dza.png" }
+        { href:"https://t.me/xBET_MENA_EGY", text:"1xBET Egypt", flag:"img/egy.png" },
+        { href:"https://t.me/xBET_MENA_MAR", text:"1xBET Morocco", flag:"img/mar.png" },
+        { href:"https://t.me/xBET_MENA_MRT", text:"1xBET Mauritania", flag:"img/mrt.png" },
+        { href:"https://t.me/xBET_MENA_IRQ", text:"1xBET Iraq", flag:"img/irq.png" },
+        { href:"https://t.me/xBET_MENA_JOR", text:"1xBET Jordan", flag:"img/jor.png" },
+        { href:"https://t.me/xBET_MENA_DZA", text:"1xBET Algeria", flag:"img/dza.png" }
     ];
+    const telegramLinks = document.getElementById("telegram-links");
+    telegramData.forEach(item => {
+        const a = document.createElement("a");
+        a.href = item.href;
+        a.target = "_blank";
+        a.className = "tg-link";
+        a.innerHTML = `<img src="${item.flag}" alt="flag" width="24"> ${item.text}`;
+        telegramLinks.appendChild(a);
+    });
 
-    const emailData = [
-        { href: "mailto:processing@eg.1xbet-team.com", text: "supportTeamEgypt" },
-        { href: "mailto:processing-morocco@1xbet-team.com", text: "supportTeamMorocco" },
-        { href: "mailto:processing-mauritania@1xbet-team.com", text: "supportTeamMauritania" },
-        { href: "mailto:processing-iq@1xbet-team.com", text: "supportTeamIraq" },
-        { href: "mailto:processing-algeria@1xbet-team.com", text: "supportTeamAlgeria" },
-        { href: "mailto:processing-tunisia@1xbet-team.com", text: "supportTeamTunisia" },
-        { href: "mailto:processing-djibouti@1xbet-team.com", text: "supportTeamDjibouti" },
-        { href: "mailto:processing-jor@1xbet-team.com", text: "supportTeamJordan" },
-        { href: "mailto:processing-haiti@1xbet-team.com", text: "supportTeamHaiti" },
-        { href: "mailto:processing-ar@1xbet-team.com", text: "supportTeamOther" }
-    ];
-
-    const botData = [
-        { href: "https://t.me/iraqpaymentssupport_bot", text: "financialSupportBotIraq", icon: "img/irq.png" },
-        { href: "https://t.me/jordanpaymentssupport_bot", text: "financialSupportBotJordan", icon: "img/jor.png" },
-        { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" },
-        { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" },
-        { href: "https://t.me/egyptpaymentssupport_bot", text: "financialSupportBotEgypt", icon: "img/egy.png" }
-    ];
-
-    const newsData = [
-        { title: "newOffer", content: "promocodeOffer" },
-        { title: "newUpdate", content: "telegramUpdate" },
-        { title: "gameBotNews", content: "gameBotNewsContent" }
-    ];
-
-    // الترجمات
-    const translations = {
-        ar: {
-            home: "الرئيسية",
-            telegram: "تلغرام",
-            email: "البريد الإلكتروني",
-            bots: "بوتات الدعم",
-            gameBot: "بوت الألعاب",
-            promocode: "البروموكود",
-            copyBtn: "نسخ الكود",
-            copied: "تم النسخ!",
-            profileTitle: "مدونة 1xBET بالعربي",
-            profileDesc: "آخر الأخبار والإعلانات",
-            telegramHeader: "قنوات تلغرام الرسمية",
-            emailHeader: "اختر دولتك وراسلنا مباشرة عبر البريد الإلكتروني",
-            botHeader: "اختر دولتك وراسلنا عبر بوتات تلغرام",
-            gameBotHeader: "جرب بوت الألعاب الجديد الآن!",
-            loading: "جاري التحميل...",
-            promocodeText: "استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!",
-            newOffer: "برومو جديد!",
-            promocodeOffer: "استخدم كود 1XARABI للحصول على مكافأة 200% على إيداعك الأول!",
-            newUpdate: "تحديث جديد",
-            telegramUpdate: "تم اطلاق بوت تلغرام لحل المشاكل المالية في دولة مصر!",
-            gameBotNews: "إطلاق بوت الألعاب!",
-            gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريباً!",
-            supportTeamEgypt: "فريق الدعم - مصر",
-            supportTeamMorocco: "فريق الدعم - المغرب",
-            supportTeamMauritania: "فريق الدعم - موريتانيا",
-            supportTeamIraq: "فريق الدعم - العراق",
-            supportTeamAlgeria: "فريق الدعم - الجزائر",
-            supportTeamTunisia: "فريق الدعم - تونس",
-            supportTeamDjibouti: "فريق الدعم - جيبوتي",
-            supportTeamJordan: "فريق الدعم - الأردن",
-            supportTeamHaiti: "فريق الدعم - هايتي",
-            supportTeamOther: "باقي الدول العربية",
-            financialSupportBotIraq: "بوت الدعم المالي - العراق",
-            financialSupportBotJordan: "بوت الدعم المالي - الأردن",
-            financialSupportBotAlgeria: "بوت الدعم المالي - الجزائر",
-            financialSupportBotMorocco: "بوت الدعم المالي - المغرب",
-            financialSupportBotEgypt: "بوت الدعم المالي - مصر",
-            gameBot: "بوت الألعاب"
-        },
-        en: {
-            home: "Home",
-            telegram: "Telegram",
-            email: "Email",
-            bots: "Support Bots",
-            gameBot: "Game Bot",
-            promocode: "Promo Code",
-            copyBtn: "Copy Code",
-            copied: "Copied!",
-            profileTitle: "1xBET Arabic Blog",
-            profileDesc: "Latest News and Announcements",
-            telegramHeader: "Official Telegram channels",
-            emailHeader: "Choose your country and contact us directly via Email",
-            botHeader: "Choose your country and contact us via Telegram Bots",
-            gameBotHeader: "Try the new Game Bot now!",
-            loading: "Loading...",
-            promocodeText: "Use the code <strong>1XARABI</strong> to get exclusive bonuses!",
-            newOffer: "New Promo!",
-            promocodeOffer: "Use code 1XARABI to get a 200% bonus on your first deposit!",
-            newUpdate: "New Update",
-            telegramUpdate: "A Telegram bot has been launched to solve financial issues in Egypt!",
-            gameBotNews: "Game Bot Launch!",
-            gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!",
-            supportTeamEgypt: "Support Team - Egypt",
-            supportTeamMorocco: "Support Team - Morocco",
-            supportTeamMauritania: "Support Team - Mauritania",
-            supportTeamIraq: "Support Team - Iraq",
-            supportTeamAlgeria: "Support Team - Algeria",
-            supportTeamTunisia: "Support Team - Tunisia",
-            supportTeamDjibouti: "Support Team - Djibouti",
-            supportTeamJordan: "Support Team - Jordan",
-            supportTeamHaiti: "Support Team - Haiti",
-            supportTeamOther: "Other Arab Countries",
-            financialSupportBotIraq: "Financial Support Bot - Iraq",
-            financialSupportBotJordan: "Financial Support Bot - Jordan",
-            financialSupportBotAlgeria: "Financial Support Bot - Algeria",
-            financialSupportBotMorocco: "Financial Support Bot - Morocco",
-            financialSupportBotEgypt: "Financial Support Bot - Egypt",
-            gameBot: "Game Bot"
-        },
-        fr: {
-            home: "Accueil",
-            telegram: "Télégramme",
-            email: "Email",
-            bots: "Bots de Support",
-            gameBot: "Bot de Jeu",
-            promocode: "Code Promo",
-            copyBtn: "Copier le Code",
-            copied: "Copié !",
-            profileTitle: "Blog 1xBET Arabe",
-            profileDesc: "Dernières Nouvelles et Annonces",
-            telegramHeader: "Chaînes Telegram officielles",
-            emailHeader: "Choisissez votre pays et contactez-nous directement par Email",
-            botHeader: "Choisissez votre pays et contactez-nous via les Bots Télégramme",
-            gameBotHeader: "Essayez le nouveau Bot de Jeu maintenant !",
-            loading: "Chargement...",
-            promocodeText: "Utilisez le code <strong>1XARABI</strong> pour obtenir des bonus exclusifs !",
-            newOffer: "Nouveau Promo !",
-            promocodeOffer: "Utilisez le code 1XARABI pour obtenir un bonus de 200% sur votre premier dépôt !",
-            newUpdate: "Nouvelle Mise à Jour",
-            telegramUpdate: "Un bot Telegram a été lancé pour résoudre les problèmes financiers en Égypte !",
-            gameBotNews: "Lancement du Bot de Jeu !",
-            gameBotNewsContent: "Le Bot de Jeu est en cours de développement... Restez à l'écoute pour une expérience de divertissement incroyable !",
-            supportTeamEgypt: "Équipe de Support - Égypte",
-            supportTeamMorocco: "Équipe de Support - Maroc",
-            supportTeamMauritania: "Équipe de Support - Mauritanie",
-            supportTeamIraq: "Équipe de Support - Irak",
-            supportTeamAlgeria: "Équipe de Support - Algérie",
-            supportTeamTunisia: "Équipe de Support - Tunisie",
-            supportTeamDjibouti: "Équipe de Support - Djibouti",
-            supportTeamJordan: "Équipe de Support - Jordanie",
-            supportTeamHaiti: "Équipe de Support - Haïti",
-            supportTeamOther: "Autres Pays Arabes",
-            financialSupportBotIraq: "Bot de Support Financier - Irak",
-            financialSupportBotJordan: "Bot de Support Financier - Jordanie",
-            financialSupportBotAlgeria: "Bot de Support Financier - Algérie",
-            financialSupportBotMorocco: "Bot de Support Financier - Maroc",
-            financialSupportBotEgypt: "Bot de Support Financier - Égypte",
-            gameBot: "Bot de Jeu"
-        }
-    };
-
-    function updateLinks(container, data, options = {}) {
-        container.innerHTML = "";
-        const { isEmail = false, isBot = false, isGameBot = false, headerText = "" } = options;
-        const lang = document.documentElement.getAttribute("lang") || "ar";
-        if (headerText) {
-            const header = document.createElement("p");
-            header.textContent = translations[lang][headerText];
-            header.className = isBot ? "bot-header" : isGameBot ? "game-bot-header" : "email-header";
-            container.appendChild(header);
-        }
-        data.forEach(item => {
-            const link = document.createElement("a");
-            link.href = item.href;
-            link.className = isEmail ? "email-link" : isGameBot ? "game-bot-link" : isBot ? "bot-link" : "tg-link";
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-            link.innerHTML = isEmail ? translations[lang][item.text] :
-                            (isBot || isGameBot ? `<img src="${item.icon}" alt="Icon" loading="lazy">${translations[lang][item.text]}` :
-                                                 `<img src="${item.flag}" alt="Icon" loading="lazy">${item.text}`);
-            container.appendChild(link);
+    // نسخ البروموكود
+    const copyBtn = document.getElementById("copy-promocode-btn");
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText("1XARABI").then(() => {
+            showToast("تم النسخ!");
         });
+    });
+
+    // Scroll to top
+    const scrollBtn = document.querySelector(".scroll-top-btn");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) scrollBtn.classList.add("active");
+        else scrollBtn.classList.remove("active");
+    });
+    scrollBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Toast
+    function showToast(msg) {
+        const toast = document.getElementById("toast");
+        toast.textContent = msg;
+        toast.style.display = "block";
+        setTimeout(()=>{toast.style.display="none";},2000);
     }
 
-    function updateNews() {
-        const lang = document.documentElement.getAttribute("lang") || "ar";
-        newsContent.innerHTML = `<div class='spinner'><i class='fas fa-spinner'></i><span class='loading-text' data-loading-text></span></div>`;
-        const loadingInterval = updateLoadingText();
-        setTimeout(() => {
-            clearInterval(loadingInterval);
-            newsContent.innerHTML = "";
-            newsData.forEach(item => {
-                const newsItem = document.createElement("div");
-                newsItem.className = "news-item";
-                newsItem.innerHTML = `<h4>${translations[lang][item.title]}</h4><p>${translations[lang][item.content]}</p>`;
-                newsContent.appendChild(newsItem);
-            });
-        }, 500);
-    }
-
-    // ... باقي الكود مثل النسخ، التمرير للأعلى، تبديل الوضع الليلي، وإدارة اللغة
-
-    updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
-    updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
-    updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-    updateNews();
+    // Theme toggle
+    const themeBtn = document.querySelector(".theme-toggle");
+    themeBtn.addEventListener("click", ()=>{
+        const current = document.documentElement.getAttribute("data-theme") || "light";
+        const newTheme = current === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+    });
 });
