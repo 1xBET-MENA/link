@@ -1,73 +1,70 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدونة 1xBET بالعربي</title>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدونة 1xBET بالعربي</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="img/logo.png" alt="شعار 1xBET" class="logo">
-            <nav class="navbar">
-                <a href="#home" class="nav-link active">الرئيسية</a>
-                <a href="#telegram" class="nav-link">تلغرام</a>
-                <a href="#email" class="nav-link">البريد الإلكتروني</a>
-                <a href="#bots" class="nav-link">بوتات الدعم</a>
-                <a href="#promocode" class="nav-link">البروموكود</a>
-            </nav>
-            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+<header>
+    <div class="logo-title">
+        <img src="img/logo.png" alt="شعار 1xBET" class="logo">
+        <h1>مدونة 1xBET بالعربي</h1>
+    </div>
+    <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+</header>
+
+<nav class="navbar">
+    <a href="#home" class="nav-link active">الرئيسية</a>
+    <a href="#telegram" class="nav-link">تلغرام</a>
+    <a href="#email" class="nav-link">البريد الإلكتروني</a>
+    <a href="#bots" class="nav-link">بوتات الدعم</a>
+    <a href="#promocode" class="nav-link">البروموكود</a>
+</nav>
+
+<div class="progress-bar"></div>
+
+<main>
+    <section id="home" class="section">
+        <h2>آخر الأخبار</h2>
+        <div id="news-content" class="news-list">
+            <div class="spinner"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>
         </div>
-    </header>
+    </section>
 
-    <div class="progress-bar"></div>
+    <section id="telegram" class="section">
+        <h2>قنوات تلغرام</h2>
+        <div id="telegram-links" class="links"></div>
+    </section>
 
-    <main>
-        <section id="home" class="section">
-            <div class="profile">
-                <img src="img/main.jpg" alt="1xBET بالعربي" class="profile-img">
-                <h1>مدونة 1xBET بالعربي</h1>
-                <p>آخر الأخبار والإعلانات</p>
-            </div>
-            <div class="news-list" id="news-content">
-                <div class="spinner"><i class="fas fa-spinner fa-spin"></i><span class="loading-text">جاري التحميل...</span></div>
-            </div>
-        </section>
+    <section id="email" class="section">
+        <h2>البريد الإلكتروني</h2>
+        <div id="email-links" class="links"></div>
+    </section>
 
-        <section id="telegram" class="section">
-            <h2>قنوات تلغرام</h2>
-            <div class="links" id="telegram-links"></div>
-        </section>
+    <section id="bots" class="section">
+        <h2>بوتات الدعم</h2>
+        <div id="bot-links" class="links"></div>
+    </section>
 
-        <section id="email" class="section">
-            <h2>البريد الإلكتروني</h2>
-            <div class="links" id="email-links"></div>
-        </section>
+    <section id="promocode" class="section">
+        <h2>البروموكود</h2>
+        <p>استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!</p>
+        <button id="copy-promocode-btn" class="copy-btn">نسخ الكود</button>
+        <p id="copy-status"></p>
+    </section>
+</main>
 
-        <section id="bots" class="section">
-            <h2>بوتات الدعم</h2>
-            <div class="links" id="bot-links"></div>
-        </section>
+<button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+<div id="toast"></div>
 
-        <section id="promocode" class="section">
-            <h2>البروموكود</h2>
-            <div class="promocode-box">
-                <p>استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!</p>
-                <button id="copy-promocode-btn" class="copy-btn">نسخ الكود</button>
-                <span id="copy-status" class="copy-status"></span>
-            </div>
-        </section>
-    </main>
+<footer>
+    <p>Powered by 1xBET بالعربي</p>
+</footer>
 
-    <button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
-
-    <footer>
-        <p>Powered by <span>1xBET بالعربي</span></p>
-    </footer>
+<script src="script.js" defer></script>
 </body>
 </html>
