@@ -1,0 +1,151 @@
+/* --- Global --- */
+body {
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    background: #f5f5f5;
+    color: #222;
+    transition: 0.3s;
+}
+:root[data-theme="dark"] {
+    --bg: #121212;
+    --text: #f5f5f5;
+    --primary: #ff5722;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header --- */
+header {
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.navbar {
+    display: flex;
+    gap: 15px;
+}
+.nav-link {
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.nav-link:hover, .nav-link.active {
+    background: rgba(255,255,255,0.2);
+}
+
+/* --- Sections --- */
+.section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Profile --- */
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* --- News --- */
+.news-list {
+    display: grid;
+    gap: 20px;
+}
+.news-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* --- Links --- */
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+.tg-link, .email-link, .bot-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+.tg-link:hover, .email-link:hover, .bot-link:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* --- Promocode --- */
+.promocode-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+.copy-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.copy-btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- Scroll Top --- */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+.scroll-top-btn.active {
+    display: flex;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary);
+    color: #fff;
+}
