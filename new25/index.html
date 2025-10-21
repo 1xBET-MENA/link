@@ -1,70 +1,95 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مدونة 1xBET بالعربي</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://trusted-source.com; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; script-src 'self' https://cdnjs.cloudflare.com https://www.googletagmanager.com; font-src 'self' https://cdnjs.cloudflare.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="description" content="مدونة 1xBET بالعربية، اكتشف الروابط الرسمية، البروموكود، وأخبار المراهنات الرياضية.">
+    <meta name="keywords" content="1xBET, 1xBET بالعربي, تلغرام 1xBET, دعم 1xBET, بروموكود, مراهنات رياضية">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>مدونة 1xBET بالعربي</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo.png" type="image/png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2F9LDBNET"></script>
+    <script src="js/analytics.js" defer></script>
 </head>
 <body>
-<header>
-    <div class="logo-title">
-        <img src="img/logo.png" alt="شعار 1xBET" class="logo">
-        <h1>مدونة 1xBET بالعربي</h1>
-    </div>
-    <button class="theme-toggle"><i class="fas fa-moon"></i></button>
-</header>
-
-<nav class="navbar">
-    <a href="#home" class="nav-link active">الرئيسية</a>
-    <a href="#telegram" class="nav-link">تلغرام</a>
-    <a href="#email" class="nav-link">البريد الإلكتروني</a>
-    <a href="#bots" class="nav-link">بوتات الدعم</a>
-    <a href="#promocode" class="nav-link">البروموكود</a>
-</nav>
-
-<div class="progress-bar"></div>
-
-<main>
-    <section id="home" class="section">
-        <h2>آخر الأخبار</h2>
-        <div id="news-content" class="news-list">
-            <div class="spinner"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>
+    <header>
+        <div class="header-container">
+            <img src="img/logo.png" alt="شعار 1xBET" class="logo">
+            <button class="theme-toggle" aria-label="تبديل الوضع الليلي/النهاري">
+                <i class="fas fa-moon"></i>
+            </button>
+            <nav class="navbar">
+                <a href="#home" class="nav-link active" data-translate="home">الرئيسية</a>
+                <a href="#telegram" class="nav-link" data-translate="telegram">تلغرام</a>
+                <a href="#email" class="nav-link" data-translate="email">البريد الإلكتروني</a>
+                <a href="#bots" class="nav-link" data-translate="bots">بوتات الدعم</a>
+                <a href="#promocode" class="nav-link" data-translate="promocode">البروموكود</a>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <section id="telegram" class="section">
-        <h2>قنوات تلغرام</h2>
-        <div id="telegram-links" class="links"></div>
-    </section>
+    <div class="progress-bar"></div>
 
-    <section id="email" class="section">
-        <h2>البريد الإلكتروني</h2>
-        <div id="email-links" class="links"></div>
-    </section>
+    <main>
+        <section id="home" class="section">
+            <div class="profile">
+                <img src="img/main.jpg" alt="1xBET بالعربي" class="profile-img">
+                <h2 data-translate="profileTitle">مدونة 1xBET بالعربي</h2>
+                <p data-translate="profileDesc">آخر الأخبار والإعلانات</p>
+            </div>
+            <div class="news-list" id="news-content">
+                <div class="spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span class="loading-text" data-loading-text>جاري التحميل...</span>
+                </div>
+            </div>
+        </section>
 
-    <section id="bots" class="section">
-        <h2>بوتات الدعم</h2>
-        <div id="bot-links" class="links"></div>
-    </section>
+        <section id="telegram" class="section">
+            <h3 data-translate="telegram">قنوات تلغرام</h3>
+            <div class="links" id="telegram-links"></div>
+        </section>
 
-    <section id="promocode" class="section">
-        <h2>البروموكود</h2>
-        <p>استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!</p>
-        <button id="copy-promocode-btn" class="copy-btn">نسخ الكود</button>
-        <p id="copy-status"></p>
-    </section>
-</main>
+        <section id="email" class="section">
+            <h3 data-translate="email">البريد الإلكتروني</h3>
+            <div class="links" id="email-links"></div>
+        </section>
 
-<button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
-<div id="toast"></div>
+        <section id="bots" class="section">
+            <h3 data-translate="bots">بوتات الدعم</h3>
+            <div class="links" id="bot-links"></div>
+        </section>
 
-<footer>
-    <p>Powered by 1xBET بالعربي</p>
-</footer>
+        <section id="promocode" class="section">
+            <h3 data-translate="promocode">البروموكود</h3>
+            <div class="promocode-content">
+                <p data-translate="promocodeText">استخدم الكود <strong>1XARABI</strong> للحصول على مكافآت حصرية!</p>
+                <button class="copy-btn" id="copy-promocode-btn" data-translate="copyBtn">نسخ الكود</button>
+                <p id="copy-status" class="copy-status"></p>
+            </div>
+        </section>
+    </main>
 
-<script src="script.js" defer></script>
+    <button class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer>
+        <p class="footer-text">Powered by <span class="brand-name">1xBET بالعربي</span></p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/script.js" defer></script>
 </body>
 </html>
