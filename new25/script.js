@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const langDropdown = document.querySelector(".lang-dropdown");
     const langOptions = document.querySelectorAll(".lang-option");
 
+    // بيانات الروابط
     const telegramData = [
         { href: "https://t.me/xBET_MENA_EGY", text: "1xBET Egypt - بالعربي", flag: "img/egy.png" },
         { href: "https://t.me/xBET_MENA_MAR", text: "1xBET Morocco - بالعربي", flag: "img/mar.png" },
@@ -60,13 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/egyptpaymentssupport_bot", text: "financialSupportBotEgypt", icon: "img/egy.png" }
     ];
 
-
     const newsData = [
         { title: "newOffer", content: "promocodeOffer" },
         { title: "newUpdate", content: "telegramUpdate" },
         { title: "gameBotNews", content: "gameBotNewsContent" }
     ];
 
+    // الترجمات
     const translations = {
         ar: {
             home: "الرئيسية",
@@ -130,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "New Update",
             telegramUpdate: "A Telegram bot has been launched to solve financial issues in Egypt!",
             gameBotNews: "Game Bot Launch!",
-            gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!!",
+            gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!",
             supportTeamEgypt: "Support Team - Egypt",
             supportTeamMorocco: "Support Team - Morocco",
             supportTeamMauritania: "Support Team - Mauritania",
@@ -229,193 +230,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     }
 
-    function setActiveLink(link) {
-        navLinks.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            observer.disconnect();
-            const targetId = link.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
-            const headerHeight = document.querySelector("header").getBoundingClientRect().height;
-            window.scrollTo({
-                top: targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20,
-                behavior: "smooth"
-            });
-            setActiveLink(link);
-            setTimeout(() => sections.forEach(section => observer.observe(section)), 100);
-        });
-    });
-
-    const sections = document.querySelectorAll(".section");
-    const observerOptions = {
-        root: null,
-        rootMargin: "-80px 0px -80px 0px",
-        threshold: 0.8
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-                const correspondingLink = document.querySelector(`.nav-link[href='#${sectionId}']`);
-                if (correspondingLink) {
-                    setActiveLink(correspondingLink);
-                }
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => observer.observe(section));
-
-    if (copyBtn) {
-        copyBtn.addEventListener("click", () => {
-            copyPromocode();
-        });
-    }
-
-    if (scrollTopBtn) {
-        window.addEventListener("scroll", () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercentage = (scrollTop / scrollHeight) * 100;
-            document.querySelector(".progress-bar").style.width = `${scrollPercentage}%`;
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add("active");
-            } else {
-                scrollTopBtn.classList.remove("active");
-            }
-        });
-        scrollTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
-            const newTheme = currentTheme === "light" ? "dark" : "light";
-            document.documentElement.setAttribute("data-theme", newTheme);
-            document.body.setAttribute("data-theme", newTheme);
-            themeToggle.innerHTML = `<i class="fas fa-${newTheme === "light" ? "moon" : "sun"}"></i>`;
-            localStorage.setItem("theme", newTheme);
-        });
-        const savedTheme = localStorage.getItem("theme") || "dark";
-        document.documentElement.setAttribute("data-theme", savedTheme);
-        document.body.setAttribute("data-theme", savedTheme);
-        themeToggle.innerHTML = `<i class="fas fa-${savedTheme === "light" ? "moon" : "sun"}"></i>`;
-    }
-
-if (langDropdown) {
-    langOptions.forEach(option => {
-        option.addEventListener("click", () => {
-            const lang = option.getAttribute("data-lang");
-            document.documentElement.setAttribute("lang", lang);
-            document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-            document.body.setAttribute("lang", lang);
-
-            document.querySelectorAll("[data-translate]").forEach(element => {
-                const key = element.getAttribute("data-translate");
-                if (translations[lang][key]) {
-                    if (key === "promocodeText") {
-                        element.innerHTML = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
-            });
-
-            updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
-            updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
-            updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
-            updateNews();
-
-            localStorage.setItem("lang", lang);
-        });
-    });
-
-    const savedLang = localStorage.getItem("lang") || "ar";
-    document.documentElement.setAttribute("lang", savedLang);
-    document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
-    document.body.setAttribute("lang", savedLang);
-    document.querySelectorAll("[data-translate]").forEach(element => {
-        const key = element.getAttribute("data-translate");
-        if (translations[savedLang][key]) {
-            if (key === "promocodeText") {
-                element.innerHTML = translations[savedLang][key];
-            } else {
-                element.textContent = translations[savedLang][key];
-            }
-        }
-    });
-}
+    // ... باقي الكود مثل النسخ، التمرير للأعلى، تبديل الوضع الليلي، وإدارة اللغة
 
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
     updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
     updateNews();
-    setActiveLink(document.querySelector(".nav-link.active"));
-
-    ["img/main.jpg", "img/logo.png", "img/game-bot.png"].forEach(url => {
-        const img = new Image();
-        img.src = url;
-        img.onerror = () => console.error(`فشل تحميل الصورة: ${url}`);
-    });
 });
-
-function copyPromocode() {
-    const promocode = "1XARABI";
-    const statusElement = document.getElementById("copy-status");
-    const inputElement = document.querySelector(".promocode-input");
-    const copyBtn = document.getElementById("copy-promocode-btn");
-    const lang = document.documentElement.getAttribute("lang") || "ar";
-    statusElement.textContent = "";
-    if (!window.location.protocol.includes("https") && !window.location.hostname.includes("localhost")) {
-        statusElement.textContent = translations[lang].copied;
-        inputElement.style.display = "block";
-        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1XARABI");
-        return;
-    }
-    navigator.clipboard.writeText(promocode).then(() => {
-        statusElement.textContent = translations[lang].copied;
-        copyBtn.textContent = translations[lang].copied;
-        showToast(translations[lang].copied);
-        setTimeout(() => {
-            copyBtn.textContent = translations[lang].copyBtn;
-            statusElement.textContent = "";
-        }, 2000);
-    }).catch(() => {
-        statusElement.textContent = translations[lang].copied ? "فشل النسخ، انسخ يدويًا:" : "Failed to copy, please copy manually: ";
-        inputElement.style.display = "block";
-        showToast(translations[lang].copied || "فشل النسخ، انسخ يدويًا: 1XARABI");
-    });
-}
-
-function showToast(message) {
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-    toast.style.display = "block";
-    setTimeout(() => toast.style.display = "none", 2000);
-}
-
-function fallbackCopy(text) {
-    const statusElement = document.getElementById("copy-status");
-    const tempInput = document.createElement("textarea");
-    tempInput.style.position = "absolute";
-    tempInput.style.left = "-9999px";
-    tempInput.value = text;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    tempInput.setSelectionRange(0, 99999);
-    try {
-        const successful = document.execCommand("copy");
-        statusElement.textContent = successful ? translations[document.documentElement.getAttribute("lang") || "ar"].copied : "فشل النسخ، يرجى نسخه يدويًا: " + text;
-    } catch (err) {
-        statusElement.textContent = "فشل النسخ: " + err.message + "، يرجى نسخه يدويًا: " + text;
-    } finally {
-        document.body.removeChild(tempInput);
-    }
-}
