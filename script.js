@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/jordanpaymentssupport_bot", text: "financialSupportBotJordan", icon: "img/jor.png" },
         { href: "https://t.me/algeriapaymentssupport_bot", text: "financialSupportBotAlgeria", icon: "img/dza.png" },
         { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" },
-        { href: "https://t.me/egyptpaymentssupport_bot", text: "financialSupportBotEgypt", icon: "img/egy.png" }
+        { href: "https://t.me/egyptsupport_bot", text: "financialSupportBotEgypt", icon: "img/egy.png" }
     ];
 
 
@@ -419,6 +419,7 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
 
