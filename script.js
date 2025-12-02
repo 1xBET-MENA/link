@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "تحديث جديد",
             telegramUpdate: "تم اطلاق بوت تلغرام لحل المشاكل المالية في دولة مصر!",
             gameBotNews: "إطلاق بوت الألعاب!",
-            gameBotNewsContent: "بوت الألعاب قيد التطوير... ترقبوا تجربة ترفيهية مذهلة قريباً!",
+            gameBotNewsContent: "اللعبة فتحت أبوابها! ادخل ونافس أقوى لاعبين XO!",
             supportTeamEgypt: "فريق الدعم - مصر",
             supportTeamMorocco: "فريق الدعم - المغرب",
             supportTeamMauritania: "فريق الدعم - موريتانيا",
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "New Update",
             telegramUpdate: "A Telegram bot has been launched to solve financial issues in Egypt!",
             gameBotNews: "Game Bot Launch!",
-            gameBotNewsContent: "Game Bot is under development... Stay tuned for an amazing entertainment experience!!",
+            gameBotNewsContent: "The game has opened its doors! Join in and challenge the strongest XO players",
             supportTeamEgypt: "Support Team - Egypt",
             supportTeamMorocco: "Support Team - Morocco",
             supportTeamMauritania: "Support Team - Mauritania",
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newUpdate: "Nouvelle Mise à Jour",
             telegramUpdate: "Un bot Telegram a été lancé pour résoudre les problèmes financiers en Égypte !",
             gameBotNews: "Lancement du Bot de Jeu !",
-            gameBotNewsContent: "Le Bot de Jeu est en cours de développement... Restez à l'écoute pour une expérience de divertissement incroyable !",
+            gameBotNewsContent: "Le jeu a ouvert ses portes ! Rejoignez-nous et défiez les meilleurs joueurs de XO",
             supportTeamEgypt: "Équipe de Support - Égypte",
             supportTeamMorocco: "Équipe de Support - Maroc",
             supportTeamMauritania: "Équipe de Support - Mauritanie",
@@ -415,6 +415,7 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
 
