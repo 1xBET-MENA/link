@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const telegramLinks = document.getElementById("telegram-links");
     const emailLinks = document.getElementById("email-links");
     const botLinks = document.getElementById("bot-links");
+    const gameBotLinks = document.getElementById("game-bot-links");
     const newsContent = document.getElementById("news-content");
     const copyBtn = document.getElementById("copy-promocode-btn");
     const scrollTopBtn = document.querySelector(".scroll-top-btn");
@@ -59,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
         { href: "https://t.me/moroccopaymentssupport_bot", text: "financialSupportBotMorocco", icon: "img/mar.png" },
     ];
 
+    const gameBotData = [
+        { href: "https://t.me/xBETxoBOT", text: "gameBot", icon: "img/game-bot.png" }
+    ];
 
     const newsData = [
         { title: "newOffer", content: "promocodeOffer" },
@@ -327,6 +331,7 @@ if (langDropdown) {
             updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
             updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
             updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
+            updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
             updateNews();
 
             localStorage.setItem("lang", lang);
@@ -352,6 +357,7 @@ if (langDropdown) {
     updateLinks(telegramLinks, telegramData, { headerText: "telegramHeader" });
     updateLinks(emailLinks, emailData, { isEmail: true, headerText: "emailHeader" });
     updateLinks(botLinks, botData, { isBot: true, headerText: "botHeader" });
+    updateLinks(gameBotLinks, gameBotData, { isGameBot: true, headerText: "gameBotHeader" });
     updateNews();
     setActiveLink(document.querySelector(".nav-link.active"));
 
@@ -415,6 +421,7 @@ function fallbackCopy(text) {
         document.body.removeChild(tempInput);
     }
 }
+
 
 
 
